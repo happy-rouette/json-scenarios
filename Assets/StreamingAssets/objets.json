@@ -8,7 +8,7 @@
 			"y":370,
 			"mobile": true,
 			"image": {
-				"src": "assets/oeufs.png",
+				"src": "oeufs",
 				"dimX": 60,
 				"dimY": 60,
 				"clefs": {"x":2, "y":1}
@@ -22,7 +22,7 @@
 			"y": 335,
 			"mobile": true,
 			"image": {
-				"src": "assets/lait.png",
+				"src": "lait",
 				"dimX": 60,
 				"dimY": 120,
 				"clefs": {"x":4, "y":1}
@@ -36,7 +36,7 @@
 			"y": 360,
 			"mobile": true,
 			"image": {
-				"src": "assets/farine.png",
+				"src": "farine",
 				"dimX": 60,
 				"dimY": 90,
 				"clefs": {"x":2, "y":1}
@@ -50,7 +50,7 @@
 			"y": 435,
 			"mobile": true,
 			"image": {
-				"src": "assets/spatule.png",
+				"src": "spatule",
 				"dimX": 90,
 				"dimY": 60,
 				"clefs": {"x":1, "y":2}
@@ -64,7 +64,7 @@
 			"y": 370,
 			"mobile": true,
 			"image": {
-				"src": "assets/saladier.png",
+				"src": "saladier",
 				"dimX": 120,
 				"dimY": 60,
 				"clefs": {"x":1, "y":8}
@@ -78,7 +78,7 @@
 			"y": 400,
 			"mobile": true,
 			"image": {
-				"src": "assets/moule.png",
+				"src": "moule",
 				"dimX": 120,
 				"dimY": 150,
 				"clefs": {"x":5, "y":1}
@@ -91,7 +91,7 @@
 			"x": 680,
 			"y": 170,
 			"image": {
-				"src": "assets/four.png",
+				"src": "four",
 				"dimX": 180,
 				"dimY": 180,
 				"clefs": {"x":3, "y":1}
@@ -104,7 +104,7 @@
 			"x": 150,
 			"y": 220,
 			"image": {
-				"src": "assets/cuisson.png",
+				"src": "cuisson",
 				"dimX": 180,
 				"dimY": 60,
 				"clefs": {"x":1, "y":2}
@@ -118,7 +118,7 @@
 			"y": 370,
 			"mobile": true,
 			"image": {
-				"src": "assets/sucre.png",
+				"src": "sucre",
 				"dimX": 60,
 				"dimY": 90,
 				"clefs": {"x":1, "y":1}
@@ -132,7 +132,7 @@
 			"y": 440,
 			"mobile": true,
 			"image": {
-				"src": "assets/miel.png",
+				"src": "miel",
 				"dimX": 40,
 				"dimY": 40,
 				"clefs": {"x":1, "y":1}
@@ -146,7 +146,7 @@
 			"y": 440,
 			"mobile": true,
 			"image": {
-				"src": "assets/casserole.png",
+				"src": "casserole",
 				"dimX": 90,
 				"dimY": 84,
 				"clefs": {"x":3, "y":1}
@@ -160,7 +160,7 @@
 			"y": 430,
 			"mobile": true,
 			"image": {
-				"src": "assets/épices.png",
+				"src": "épices",
 				"dimX": 20,
 				"dimY": 40,
 				"clefs": {"x":1, "y":1}
@@ -174,7 +174,7 @@
 			"y": 420,
 			"mobile": true,
 			"image": {
-				"src": "assets/verre_doseur.png",
+				"src": "verre_doseur",
 				"dimX": 60,
 				"dimY": 90,
 				"clefs": {"x":2, "y":1}
