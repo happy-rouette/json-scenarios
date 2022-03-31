@@ -8,6 +8,7 @@ public class Interactable : MonoBehaviour
     public static Action<Interactable> OnClicked;
     public static Action<Interactable> OnEnter;
     public static Action<Interactable> OnExit;
+    public string Type;
 
     private SpriteRenderer _spriteRenderer;
     private Sprite[] _sprites;
@@ -19,25 +20,33 @@ public class Interactable : MonoBehaviour
 
     public void Init(ObjectData data) {
         gameObject.name = data.nom;
+        Type = data.type;
         transform.position = new Vector2(data.x, data.y).ToWorldPos();
         _sprites = Resources.LoadAll<Sprite>("ObjectSprites/" + data.image.src);
         _spriteRenderer.sprite = _sprites[0];
         GetComponent<BoxCollider2D>().size = _spriteRenderer.bounds.size;
     }
 
-    private void OnMouseEnter() {
-        OnEnter?.Invoke(this);
-    }
-
-    private void OnMouseExit() {
-        OnExit?.Invoke(this);
-    }
-
-    private void OnMouseUpAsButton() {
-        /*if (++_currentSpriteIndex >= _sprites.Length)
+    private void NextState() 
+    {
+        if (++_currentSpriteIndex >= _sprites.Length)
             _currentSpriteIndex = 0;
-        
-        _spriteRenderer.sprite = _sprites[_currentSpriteIndex];*/
+        SetStateIndex(_currentSpriteIndex);
+    }
+
+    private void SetStateIndex(int stateIndex) 
+    {
+        _spriteRenderer.sprite = _sprites[stateIndex];
+    }
+
+    private void OnMouseEnter() => OnEnter?.Invoke(this);
+    private void OnMouseExit() => OnExit?.Invoke(this);
+    
+    private void OnMouseUpAsButton() 
+    {
         OnClicked?.Invoke(this);
+        
+        if (Type.Equals("électroménager"))
+            SetStateIndex(1);
     }
 }

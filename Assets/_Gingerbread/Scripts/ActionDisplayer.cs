@@ -21,8 +21,9 @@ public class ActionDisplayer : MonoBehaviour
         if (interactable == _firstInteractable) return;
 
         string actionString = "Utiliser ";
-        actionString += (_firstInteractable == null ? interactable.name : _firstInteractable.name) + " avec";
-        actionString += _firstInteractable == null ? "..." : " " + interactable.name;
+        actionString += (_firstInteractable == null ? interactable.name : _firstInteractable.name);
+        if (!interactable.Type.Equals("électroménager"))
+            actionString += _firstInteractable == null ? " avec..." : " avec " + interactable.name;
         _actionText.text = actionString;
     }
 
@@ -33,6 +34,10 @@ public class ActionDisplayer : MonoBehaviour
 
     private void ClickNewInteractable(Interactable interactable)
     {
+        // Don't assign first interactable if it's home appliance because it just power on
+        if (interactable.Type.Equals("électroménager") && _firstInteractable == null)
+            return;
+
         _firstInteractable = _firstInteractable == null ? interactable : null;
     }
 }
