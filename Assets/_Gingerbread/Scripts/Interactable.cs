@@ -22,6 +22,7 @@ public class Interactable : MonoBehaviour
         transform.position = new Vector2(data.x, data.y).ToWorldPos();
         _sprites = Resources.LoadAll<Sprite>("ObjectSprites/" + data.image.src);
         _spriteRenderer.sprite = _sprites[0];
+        GetComponent<BoxCollider2D>().size = _spriteRenderer.bounds.size;
     }
 
     private void OnMouseEnter() {
