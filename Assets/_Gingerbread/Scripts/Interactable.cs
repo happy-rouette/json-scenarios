@@ -1,9 +1,14 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class Interactable : MonoBehaviour
 {
+    public static Action<Interactable> OnClicked;
+    public static Action<Interactable> OnEnter;
+    public static Action<Interactable> OnExit;
+
     private SpriteRenderer _spriteRenderer;
     private Sprite[] _sprites;
     private int _currentSpriteIndex = 0;
@@ -19,10 +24,19 @@ public class Interactable : MonoBehaviour
         _spriteRenderer.sprite = _sprites[0];
     }
 
+    private void OnMouseEnter() {
+        OnEnter?.Invoke(this);
+    }
+
+    private void OnMouseExit() {
+        OnExit?.Invoke(this);
+    }
+
     private void OnMouseUpAsButton() {
-        if (++_currentSpriteIndex >= _sprites.Length)
+        /*if (++_currentSpriteIndex >= _sprites.Length)
             _currentSpriteIndex = 0;
         
-        _spriteRenderer.sprite = _sprites[_currentSpriteIndex];
+        _spriteRenderer.sprite = _sprites[_currentSpriteIndex];*/
+        OnClicked?.Invoke(this);
     }
 }
