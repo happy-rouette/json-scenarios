@@ -9,6 +9,11 @@ public static class Extensions
         return Camera.main.ScreenToWorldPoint(vector);
     }
 
+    public static Vector3 ToWorldPos(this Vector3 vector)
+    {
+        return Camera.main.ScreenToWorldPoint(vector);
+    }
+
     public static Vector3 SetAxisValue(this Vector3 v, int axis, float newValue) 
     {
         float[] tabV = { v.x, v.y, v.z };

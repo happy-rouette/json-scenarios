@@ -8,20 +8,27 @@ public class Interactable : MonoBehaviour
     public static Action<Interactable> OnClicked;
     public static Action<Interactable> OnEnter;
     public static Action<Interactable> OnExit;
-    public string Type;
+    public bool IsHomeAppliance;
 
+    private Transform _transform;
     private SpriteRenderer _spriteRenderer;
     private Sprite[] _sprites;
-    private int _currentSpriteIndex = 0;
+    private int _stateIndex = 0;
+    private Vector2 _mouseOffsetForDrag = Vector2.zero;
+    private bool IsMobile;
+    private Vector2 _defaultPos;
 
     private void Awake() {
         _spriteRenderer = GetComponent<SpriteRenderer>();
+        _transform = transform;
     }
 
     public void Init(ObjectData data) {
         gameObject.name = data.nom;
-        Type = data.type;
+        IsHomeAppliance = data.type.Equals("électroménager");
+        IsMobile = data.mobile;
         transform.position = new Vector2(data.x, data.y).ToWorldPos();
+        _defaultPos = transform.position;
         _sprites = Resources.LoadAll<Sprite>("ObjectSprites/" + data.image.src);
         _spriteRenderer.sprite = _sprites[0];
         GetComponent<BoxCollider2D>().size = _spriteRenderer.bounds.size;
@@ -29,9 +36,9 @@ public class Interactable : MonoBehaviour
 
     private void NextState() 
     {
-        if (++_currentSpriteIndex >= _sprites.Length)
-            _currentSpriteIndex = 0;
-        SetStateIndex(_currentSpriteIndex);
+        if (++_stateIndex >= _sprites.Length)
+            _stateIndex = 0;
+        SetStateIndex(_stateIndex);
     }
 
     private void SetStateIndex(int stateIndex) 
@@ -45,8 +52,27 @@ public class Interactable : MonoBehaviour
     private void OnMouseUpAsButton() 
     {
         OnClicked?.Invoke(this);
-        
-        if (Type.Equals("électroménager"))
+
+        if (IsHomeAppliance)
             SetStateIndex(1);
+    }
+
+    public void OnBeginDrag() 
+    {
+        if (!IsMobile) return;
+        _mouseOffsetForDrag = _transform.position - Input.mousePosition.ToWorldPos();
+        _spriteRenderer.sortingOrder = 100;
+    }
+
+    public void OnDrag() 
+    {
+        if (!IsMobile) return;
+        _transform.position = ((Vector2) Input.mousePosition.ToWorldPos()) + _mouseOffsetForDrag;
+    }
+
+    public void OnEndDrag() 
+    {
+        transform.position = _defaultPos;
+        _spriteRenderer.sortingOrder = 0;
     }
 }
