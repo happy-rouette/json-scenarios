@@ -17,7 +17,18 @@ public class JsonParser : MonoBehaviour
         _imgPath = Application.streamingAssetsPath + "/Sprites/";
         _jsonString = File.ReadAllText(_path);
         Data = JsonUtility.FromJson<ObjectListData>(_jsonString);
+        ConvertCoordsForUnity();
         OnDataDeserialized?.Invoke(Data);
+    }
+
+    private void ConvertCoordsForUnity() 
+    {
+        foreach (ObjectData obj in Data.objets) {
+            obj.y = Screen.height - obj.y; // Invert y axis
+            // Vector2Int screenCenter = new Vector2Int(Screen.width/2, Screen.height/2);
+            // obj.y = screenCenter.y - screenCenter.y - obj.y;
+            // obj.x = screenCenter.x - screenCenter.x - obj.x;
+        }
     }
 }
 
