@@ -3,20 +3,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Interactable : MonoBehaviour
+public class Interactable : MonoBehaviour, IComparable<Interactable>
 {
-    public static Action<Interactable> OnClicked;
-    public static Action<Interactable> OnEnter;
-    public static Action<Interactable> OnExit;
+    public static Action<string> OnMessage;
     public bool IsHomeAppliance;
 
     private Transform _transform;
     private SpriteRenderer _spriteRenderer;
     private Sprite[] _sprites;
     private int _stateIndex = 0;
+
+    // Drag & Drop
     private Vector2 _mouseOffsetForDrag = Vector2.zero;
     private bool IsMobile;
     private Vector2 _defaultPos;
+
+    // Drag interaction with other Interactables
+    private static Interactable _grabbedInteractable;
+    private float _distanceWithGrabbed 
+    { get => Vector3.Distance(_transform.position, _grabbedInteractable.transform.position); }
+    private List<Interactable> _interactablesInRange = new List<Interactable>();
+    private string[] badFeedbacks = { 
+        "Fais pas le fou",
+        "Cheh",
+        "Non non non petit fripouillot",
+        "Abuse pas",
+        "Nope",
+        "J'ai pas hâte de gouter ton gâteau"
+    };
 
     private void Awake() {
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -45,14 +59,9 @@ public class Interactable : MonoBehaviour
     {
         _spriteRenderer.sprite = _sprites[stateIndex];
     }
-
-    private void OnMouseEnter() => OnEnter?.Invoke(this);
-    private void OnMouseExit() => OnExit?.Invoke(this);
     
     private void OnMouseUpAsButton() 
     {
-        OnClicked?.Invoke(this);
-
         if (IsHomeAppliance)
             SetStateIndex(1);
     }
@@ -62,6 +71,7 @@ public class Interactable : MonoBehaviour
         if (!IsMobile) return;
         _mouseOffsetForDrag = _transform.position - Input.mousePosition.ToWorldPos();
         _spriteRenderer.sortingOrder = 100;
+        _grabbedInteractable = this;
     }
 
     public void OnDrag() 
@@ -72,7 +82,42 @@ public class Interactable : MonoBehaviour
 
     public void OnEndDrag() 
     {
+        string feedback = InteractWithDestination();
+        OnMessage?.Invoke(feedback);
+        _interactablesInRange.Clear();
+
         transform.position = _defaultPos;
         _spriteRenderer.sortingOrder = 0;
+        _grabbedInteractable = null;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.TryGetComponent<Interactable>(out Interactable interactable))
+            _interactablesInRange.Add(interactable);
+    }
+
+    private void OnTriggerExit2D(Collider2D other) {
+        Interactable interactable = other.GetComponent<Interactable>();
+        if (_interactablesInRange.Contains(interactable))
+            _interactablesInRange.Remove(interactable);
+    }
+
+    private string InteractWithDestination() {
+        // Find the nearest interactable to interact with
+        string feedback = badFeedbacks[UnityEngine.Random.Range(0, badFeedbacks.Length)];
+        if (_interactablesInRange.Count > 0) {
+            _interactablesInRange.Sort();
+            foreach (Interactable interactable in _interactablesInRange)
+            {
+                Debug.Log("- " + interactable.name);
+                // TODO Interaction
+            }
+        }
+        return feedback;
+    }
+
+    public int CompareTo(Interactable other)
+    {
+        return _distanceWithGrabbed.CompareTo(other._distanceWithGrabbed);
     }
 }
