@@ -1,11 +1,11 @@
 {
-	"objets" : [
-		{	
+	"objets": {
+		"oeuf": {
 			"nom": "oeuf",
 			"type": "ingrédient",
-			"etats": ["frais","cassé"],
-			"x":130,
-			"y":370,
+			"etats": ["frais", "cassé"],
+			"x": 130,
+			"y": 370,
 			"mobile": true,
 			"image": {
 				"src": "oeufs",
@@ -14,11 +14,11 @@
 				"clefs": {"x":2, "y":1}
 			}
 		},
-		{
+		"lait": {
 			"nom": "lait",
 			"type": "ingrédient",
-			"etats": ["plein","entamé","presqueVide","vide"],
-			"x": 680, 
+			"etats": ["plein", "entamé", "presqueVide", "vide"],
+			"x": 680,
 			"y": 335,
 			"mobile": true,
 			"image": {
@@ -28,10 +28,10 @@
 				"clefs": {"x":4, "y":1}
 			}
 		},
-		{
+		"farine": {
 			"nom": "farine",
 			"type": "ingrédient",
-			"etats": ["neuf","entamé"],
+			"etats": ["neuf", "entamé"],
 			"x": 200,
 			"y": 360,
 			"mobile": true,
@@ -42,7 +42,7 @@
 				"clefs": {"x":2, "y":1}
 			}
 		},
-		{
+		"spatule": {
 			"nom": "spatule",
 			"type": "ustensile",
 			"etats": ["propre", "sale"],
@@ -56,10 +56,10 @@
 				"clefs": {"x":1, "y":2}
 			}
 		},
-		{
+		"saladier": {
 			"nom": "saladier",
 			"type": "ustensile",
-			"etats": ["propre", "mélangé", "sale", "blanc","oeuf","épice","presqueTout", "tout"],
+			"etats": ["propre", "mélangé", "sale", "blanc", "oeuf", "épice", "presqueTout", "tout"],
 			"x": 400,
 			"y": 370,
 			"mobile": true,
@@ -70,10 +70,10 @@
 				"clefs": {"x":1, "y":8}
 			}
 		},
-		{
+		"moule": {
 			"nom": "moule",
 			"type": "ustensile",
-			"etats": ["vide", "plein", "cuit", "auFour","brulé"],
+			"etats": ["vide", "plein", "cuit", "auFour", "brulé"],
 			"x": 550,
 			"y": 400,
 			"mobile": true,
@@ -84,7 +84,7 @@
 				"clefs": {"x":5, "y":1}
 			}
 		},
-		{
+		"four": {
 			"nom": "four",
 			"type": "électroménager",
 			"etats": ["éteint", "allumé", "cuisson"],
@@ -97,7 +97,7 @@
 				"clefs": {"x":3, "y":1}
 			}
 		},
-		{
+		"cuisson": {
 			"nom": "plaques de cuisson",
 			"type": "électroménager",
 			"etats": ["éteint", "allumé"],
@@ -110,7 +110,7 @@
 				"clefs": {"x":1, "y":2}
 			}
 		},
-		{
+		"sucre": {
 			"nom": "sucre",
 			"type": "ingrédient",
 			"etats": ["plein"],
@@ -124,7 +124,7 @@
 				"clefs": {"x":1, "y":1}
 			}
 		},
-		{
+		"miel": {
 			"nom": "miel",
 			"type": "ingrédient",
 			"etats": ["plein"],
@@ -138,7 +138,7 @@
 				"clefs": {"x":1, "y":1}
 			}
 		},
-		{
+		"casserole": {
 			"nom": "casserole",
 			"type": "ustensile",
 			"etats": ["vide", "pleine", "chaude"],
@@ -152,8 +152,8 @@
 				"clefs": {"x":3, "y":1}
 			}
 		},
-		{
-			"nom": "epices",
+		"épices": {
+			"nom": "épices",
 			"type": "ingrédient",
 			"etats": ["plein"],
 			"x": 180,
@@ -166,7 +166,7 @@
 				"clefs": {"x":1, "y":1}
 			}
 		},
-		{
+		"doseur": {
 			"nom": "verre doseur",
 			"type": "ustensile",
 			"etats": ["vide", "plein"],
@@ -180,5 +180,5 @@
 				"clefs": {"x":2, "y":1}
 			}
 		}
-	]
+	}
 }

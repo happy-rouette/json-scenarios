@@ -42,11 +42,19 @@ public class RecipeManager : MonoBehaviour
         {
             if (tos.TryGetValue(to.Key, out RecipeResult result))
             {
-                // TODO Post conditions
+                foreach(string postCondition in result.postconditions)
+                    SetPostCondition(postCondition);
                 return result.message;
             }
         }
         return "";
+    }
+
+    private void SetPostCondition(string postCondition) 
+    {
+        string[] idAndState = postCondition.Split('/');
+        Interactable interactable = GameManager.Instance.GetInteractable(idAndState[0]);
+        interactable?.SetState(idAndState[1]);
     }
 }
 

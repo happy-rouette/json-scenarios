@@ -7,21 +7,21 @@ using UnityEngine;
 
 public class ObjectParser : MonoBehaviour
 {
-    public static Action<ObjectListData> OnDataDeserialized;
-    [HideInInspector] public ObjectListData Data;
+    public static Action<ObjectDictionaryData> OnDataDeserialized;
+    [HideInInspector] public ObjectDictionaryData Data;
 
     private void Start() 
     {
         TextAsset objectsJson = Resources.Load<TextAsset>("objets");
-        Data = JsonConvert.DeserializeObject<ObjectListData>(objectsJson.text);
+        Data = JsonConvert.DeserializeObject<ObjectDictionaryData>(objectsJson.text);
         ConvertCoordsForUnity();
         OnDataDeserialized?.Invoke(Data);
     }
 
     private void ConvertCoordsForUnity() 
     {
-        foreach (ObjectData obj in Data.objets) {
-            obj.y = Screen.height - obj.y; // Invert y axis
+        foreach (KeyValuePair<string, ObjectData> obj in Data.objets) {
+            obj.Value.y = Screen.height - obj.Value.y; // Invert y axis
             // Vector2Int screenCenter = new Vector2Int(Screen.width/2, Screen.height/2);
             // obj.y = screenCenter.y - screenCenter.y - obj.y;
             // obj.x = screenCenter.x - screenCenter.x - obj.x;
@@ -30,8 +30,8 @@ public class ObjectParser : MonoBehaviour
 }
 
 [System.Serializable]
-public class ObjectListData {
-    public List<ObjectData> objets = new List<ObjectData>();
+public class ObjectDictionaryData {
+    public Dictionary<string, ObjectData> objets = new Dictionary<string, ObjectData>();
 }
 
 [System.Serializable]

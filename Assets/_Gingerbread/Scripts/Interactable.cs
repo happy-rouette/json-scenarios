@@ -32,16 +32,16 @@ public class Interactable : MonoBehaviour, IComparable<Interactable>
         _transform = transform;
     }
 
-    public void Init(ObjectData data) {
-        gameObject.name = data.nom;
-        objectID = data.image.src;
-        IsHomeAppliance = data.type.Equals("électroménager");
-        IsMobile = data.mobile;
-        transform.position = new Vector2(data.x, data.y).ToWorldPos();
+    public void Init(KeyValuePair<string, ObjectData> data) {
+        gameObject.name = data.Value.nom;
+        objectID = data.Key;
+        IsHomeAppliance = data.Value.type.Equals("électroménager");
+        IsMobile = data.Value.mobile;
+        transform.position = new Vector2(data.Value.x, data.Value.y).ToWorldPos();
         _defaultPos = transform.position;
-        _stateSprites = Resources.LoadAll<Sprite>("ObjectSprites/" + data.image.src);
+        _stateSprites = Resources.LoadAll<Sprite>("ObjectSprites/" + data.Value.image.src);
         _spriteRenderer.sprite = _stateSprites[0];
-        _stateStrings = data.etats;
+        _stateStrings = data.Value.etats;
         GetComponent<BoxCollider2D>().size = _spriteRenderer.bounds.size;
     }
 
@@ -49,6 +49,12 @@ public class Interactable : MonoBehaviour, IComparable<Interactable>
     {
         if (++_stateIndex >= _stateSprites.Length)
             _stateIndex = 0;
+        SetStateIndex(_stateIndex);
+    }
+
+    public void SetState(string state)
+    {
+        _stateIndex = Array.IndexOf(_stateStrings, state);
         SetStateIndex(_stateIndex);
     }
 
