@@ -1,0 +1,178 @@
+{
+	"étapes": {
+		"farine/neuf": {
+			"doseur/vide": {
+				"postconditions": ["farine/entamé", "doseur/plein"],
+				"message": "200g de farine ont été versés dans le verre doseur"
+			},
+			"doseur/vid": {
+				"postconditions": ["farine/entamé", "doseur/plein"],
+				"message": "200g de farine ont été versés dans le verre doseur"
+			}
+		},
+		"doseur/plein": {
+			"saladier/propre":  {
+				"postconditions": ["doseur/vide", "saladier/blanc"],
+				"message":  "200g de farine ont été transvasés dans le saladier"
+			},
+			"doseur/vid": {
+				"postconditions": ["farine/entamé", "doseur/plein"],
+				"message": "200g de farine ont été versés dans le verre doseur"
+			}
+		},
+		"oeuf/frais": {
+			"saladier/blanc":  {
+				"postconditions": ["oeuf/cassé", "saladier/oeuf"],
+				"message":  "2 oeufs ont été cassés dans le saladier"
+			},
+			"doseur/vid": {
+				"postconditions": ["farine/entamé", "doseur/plein"],
+				"message": "200g de farine ont été versés dans le verre doseur"
+			}
+		},
+		"sucre/plein": {
+			"saladier/blanc":  {
+				"message":  "Le sucre a été ajouté dans le saladier"
+			},
+			"doseur/vid": {
+				"postconditions": ["farine/entamé", "doseur/plein"],
+				"message": "200g de farine ont été versés dans le verre doseur"
+			}
+		},
+		"épices/plein": {
+			"saladier/oeuf":  {
+				"postconditions": ["saladier/presqueTout"],
+				"message":  "Les épices ont été ajoutées dans le saladier"
+			},
+			"doseur/vid": {
+				"postconditions": ["farine/entamé", "doseur/plein"],
+				"message": "200g de farine ont été versés dans le verre doseur"
+			}
+		},
+		"lait/plein": {
+			"casserole/vide": {
+				"postconditions": ["lait/entamé", "casserole/pleine"],
+				"message":  "Le lait a été versé dans la casserole"
+			},
+			"doseur/vid": {
+				"postconditions": ["farine/entamé", "doseur/plein"],
+				"message": "200g de farine ont été versés dans le verre doseur"
+			}
+		},
+		"cuisson/éteint": {
+			"self":  {
+				"postconditions": ["cuisson/allumé", "saladier/blanc"],
+				"message":  "La table de cuisson a été allumée"
+			},
+			"doseur/vid": {
+				"postconditions": ["farine/entamé", "doseur/plein"],
+				"message": "200g de farine ont été versés dans le verre doseur"
+			}
+		},
+		"cuisson/allumé": {
+			"self":  {
+				"postconditions": ["cuisson/éteint"],
+				"message":  "La table de cuisson a été éteinte"
+			},
+			"doseur/vid": {
+				"postconditions": ["farine/entamé", "doseur/plein"],
+				"message": "200g de farine ont été versés dans le verre doseur"
+			}
+		},
+		"casserole/pleine": {
+			"cuisson/allumé":  {
+				"postconditions": ["cuisson/éteint", "casserole/chaude"],
+				"message":  "La casserole de lait a été mise à tiédir"
+			},
+			"doseur/vid": {
+				"postconditions": ["farine/entamé", "doseur/plein"],
+				"message": "200g de farine ont été versés dans le verre doseur"
+			}
+		},
+		"casserole/chaude": {
+			"saladier/presqueTout":  {
+				"postconditions": ["casserole/vide", "saladier/tout"],
+				"message":  "La lait tiède a été versé dans le saladier"
+			},
+			"doseur/vid": {
+				"postconditions": ["farine/entamé", "doseur/plein"],
+				"message": "200g de farine ont été versés dans le verre doseur"
+			}
+		},
+		"miel/plein": {
+			"saladier/tout":  {
+				"message":  "Le miel a été ajouté dans le saladier"
+			},
+			"doseur/vid": {
+				"postconditions": ["farine/entamé", "doseur/plein"],
+				"message": "200g de farine ont été versés dans le verre doseur"
+			}
+		},
+		"spatule/propre": {
+			"saladier/tout":  {
+				"postconditions": ["spatule/sale", "saladier/mélangé"],
+				"message":  "Les ingrédients ont été mélangés"
+			},
+			"doseur/vid": {
+				"postconditions": ["farine/entamé", "doseur/plein"],
+				"message": "200g de farine ont été versés dans le verre doseur"
+			}
+		},
+		"four/éteint": {
+			"self":  {
+				"postconditions": ["four/allumé"],
+				"message":  "Le four a été allumé"
+			},
+			"doseur/vid": {
+				"postconditions": ["farine/entamé", "doseur/plein"],
+				"message": "200g de farine ont été versés dans le verre doseur"
+			}
+		},
+		"four/allumé": {
+			"self":  {
+				"postconditions": ["four/éteint"],
+				"message":  "Le four a été éteint" 
+			},
+			"doseur/vid": {
+				"postconditions": ["farine/entamé", "doseur/plein"],
+				"message": "200g de farine ont été versés dans le verre doseur"
+			}
+		},
+		"saladier/mélangé": {
+			"moule/vide": {
+				"postconditions": ["saladier/sale", "moule/plein"],
+				"message":  "La préparation a été versée dans le moule"
+			},
+			"doseur/vid": {
+				"postconditions": ["farine/entamé", "doseur/plein"],
+				"message": "200g de farine ont été versés dans le verre doseur"
+			}
+		},
+		"moule/plein": {
+			"four/allumé":  {
+				"postconditions": ["four/éteint", "moule/cuit"],
+				"message":  "Le pain d'épice est terminé !"
+			},
+			"doseur/vid": {
+				"postconditions": ["farine/entamé", "doseur/plein"],
+				"message": "200g de farine ont été versés dans le verre doseur"
+			}
+		},
+		"moule/cuit": {
+			"four/allumé": {
+				"postconditions": ["four/éteint", "moule/brulé"],
+				"message":  "Bravo ! Le pain d'épice est cramé !"
+			},
+			"doseur/vid": {
+				"postconditions": ["farine/entamé", "doseur/plein"],
+				"message": "200g de farine ont été versés dans le verre doseur"
+			}
+		}
+	},
+	"erreurFeedbacks" : [
+		"Fais pas le fou", "Cheh",
+        "Non non non petit fripouillot",
+        "Abuse pas", "Nope",
+        "J'ai pas hâte de gouter ton gâteau"
+	]
+}

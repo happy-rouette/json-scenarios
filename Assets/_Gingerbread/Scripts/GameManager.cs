@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private Interactable _interactablePrefab;
     [SerializeField] private SpriteRenderer _backgroundRenderer;
 
-    private void Awake() => JsonParser.OnDataDeserialized += SpawnObjects;
+    private void Awake() => ObjectParser.OnDataDeserialized += SpawnObjects;
 
     private void Start() 
     {

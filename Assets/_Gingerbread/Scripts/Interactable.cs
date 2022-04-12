@@ -7,11 +7,14 @@ public class Interactable : MonoBehaviour, IComparable<Interactable>
 {
     public static Action<string> OnMessage;
     public bool IsHomeAppliance;
+    public string Key { get => objectID + "/" + _stateStrings[_stateIndex]; }
 
     private Transform _transform;
     private SpriteRenderer _spriteRenderer;
-    private Sprite[] _sprites;
+    private Sprite[] _stateSprites;
+    private string[] _stateStrings;
     private int _stateIndex = 0;
+    private string objectID;
 
     // Drag & Drop
     private Vector2 _mouseOffsetForDrag = Vector2.zero;
@@ -23,14 +26,6 @@ public class Interactable : MonoBehaviour, IComparable<Interactable>
     private float _distanceWithGrabbed 
     { get => Vector3.Distance(_transform.position, _grabbedInteractable.transform.position); }
     private List<Interactable> _interactablesInRange = new List<Interactable>();
-    private string[] badFeedbacks = { 
-        "Fais pas le fou",
-        "Cheh",
-        "Non non non petit fripouillot",
-        "Abuse pas",
-        "Nope",
-        "J'ai pas hâte de gouter ton gâteau"
-    };
 
     private void Awake() {
         _spriteRenderer = GetComponent<SpriteRenderer>();
@@ -39,25 +34,27 @@ public class Interactable : MonoBehaviour, IComparable<Interactable>
 
     public void Init(ObjectData data) {
         gameObject.name = data.nom;
+        objectID = data.image.src;
         IsHomeAppliance = data.type.Equals("électroménager");
         IsMobile = data.mobile;
         transform.position = new Vector2(data.x, data.y).ToWorldPos();
         _defaultPos = transform.position;
-        _sprites = Resources.LoadAll<Sprite>("ObjectSprites/" + data.image.src);
-        _spriteRenderer.sprite = _sprites[0];
+        _stateSprites = Resources.LoadAll<Sprite>("ObjectSprites/" + data.image.src);
+        _spriteRenderer.sprite = _stateSprites[0];
+        _stateStrings = data.etats;
         GetComponent<BoxCollider2D>().size = _spriteRenderer.bounds.size;
     }
 
     private void NextState() 
     {
-        if (++_stateIndex >= _sprites.Length)
+        if (++_stateIndex >= _stateSprites.Length)
             _stateIndex = 0;
         SetStateIndex(_stateIndex);
     }
 
     private void SetStateIndex(int stateIndex) 
     {
-        _spriteRenderer.sprite = _sprites[stateIndex];
+        _spriteRenderer.sprite = _stateSprites[stateIndex];
     }
     
     private void OnMouseUpAsButton() 
@@ -103,14 +100,17 @@ public class Interactable : MonoBehaviour, IComparable<Interactable>
     }
 
     private string InteractWithDestination() {
+        string feedback = RecipeManager.Instance.errorFeedback;
         // Find the nearest interactable to interact with
-        string feedback = badFeedbacks[UnityEngine.Random.Range(0, badFeedbacks.Length)];
         if (_interactablesInRange.Count > 0) {
             _interactablesInRange.Sort();
             foreach (Interactable interactable in _interactablesInRange)
             {
-                Debug.Log("- " + interactable.name);
-                // TODO Interaction
+                string newFeedback = RecipeManager.Instance.Interact(this, interactable);
+                if (newFeedback.Length > 0) {
+                    feedback = newFeedback;
+                    break;
+                }
             }
         }
         return feedback;

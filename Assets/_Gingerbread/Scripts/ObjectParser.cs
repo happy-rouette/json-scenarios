@@ -2,21 +2,18 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using Newtonsoft.Json;
 using UnityEngine;
 
-public class JsonParser : MonoBehaviour
+public class ObjectParser : MonoBehaviour
 {
     public static Action<ObjectListData> OnDataDeserialized;
     [HideInInspector] public ObjectListData Data;
 
-    private string _path, _imgPath, _jsonString;
-
     private void Start() 
     {
-        _path = Application.streamingAssetsPath + "/objets.json";
-        _imgPath = Application.streamingAssetsPath + "/Sprites/";
-        _jsonString = File.ReadAllText(_path);
-        Data = JsonUtility.FromJson<ObjectListData>(_jsonString);
+        TextAsset objectsJson = Resources.Load<TextAsset>("objets");
+        Data = JsonConvert.DeserializeObject<ObjectListData>(objectsJson.text);
         ConvertCoordsForUnity();
         OnDataDeserialized?.Invoke(Data);
     }
@@ -40,7 +37,7 @@ public class ObjectListData {
 [System.Serializable]
 public class ObjectData {
     public string nom, type;
-    public string[] états;
+    public string[] etats;
     public int x, y;
     public bool mobile;
     public ImageData image;

@@ -174,7 +174,7 @@
 			"y": 420,
 			"mobile": true,
 			"image": {
-				"src": "verre_doseur",
+				"src": "doseur",
 				"dimX": 60,
 				"dimY": 90,
 				"clefs": {"x":2, "y":1}
