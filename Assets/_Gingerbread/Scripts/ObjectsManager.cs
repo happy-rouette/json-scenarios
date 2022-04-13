@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class ObjectsManager : MonoBehaviour
 {
-    public static GameManager Instance;
+    public static ObjectsManager Instance;
 
     [SerializeField] private Interactable _interactablePrefab;
     [SerializeField] private SpriteRenderer _backgroundRenderer;
@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
             DestroyImmediate(this);
         }
 
-        ObjectParser.OnDataDeserialized += SpawnObjects;
+        DataParser.OnPanoplyDeserialized += SpawnObjects;
     } 
 
     private void Start() 
@@ -29,7 +29,7 @@ public class GameManager : MonoBehaviour
         _backgroundRenderer.sprite = bgSprite;
     }
 
-    private void SpawnObjects(ObjectDictionaryData data) 
+    private void SpawnObjects(Panoply data) 
     {
         foreach (KeyValuePair<string, ObjectData> obj in data.objets)
         {

@@ -28,12 +28,8 @@ public class RecipeManager : MonoBehaviour
             Debug.LogError("Many instances of RecipeManager, detroying on " + name, gameObject);
             DestroyImmediate(this);
         }
-    }
 
-    private void Start()
-    {
-        TextAsset matriceJson = Resources.Load<TextAsset>("matrice");
-        _recipe = JsonConvert.DeserializeObject<Recipe>(matriceJson.text);
+        DataParser.OnRecipeDeserialized += (recipe) => _recipe = recipe;
     }
 
     public string Interact(string fromKey, string toKey)
@@ -53,21 +49,7 @@ public class RecipeManager : MonoBehaviour
     private void SetPostCondition(string postCondition) 
     {
         string[] idAndState = postCondition.Split('/');
-        Interactable interactable = GameManager.Instance.GetInteractable(idAndState[0]);
+        Interactable interactable = ObjectsManager.Instance.GetInteractable(idAndState[0]);
         interactable?.SetState(idAndState[1]);
     }
-}
-
-[System.Serializable]
-public class Recipe
-{
-    public Dictionary<string, Dictionary<string, RecipeResult>> étapes;
-    public List<string> erreurFeedbacks;
-}
-
-[System.Serializable]
-public class RecipeResult 
-{
-    public string[] postconditions;
-    public string message;
 }

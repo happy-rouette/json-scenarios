@@ -5,22 +5,29 @@ using System.IO;
 using Newtonsoft.Json;
 using UnityEngine;
 
-public class ObjectParser : MonoBehaviour
+public class DataParser : MonoBehaviour
 {
-    public static Action<ObjectDictionaryData> OnDataDeserialized;
-    [HideInInspector] public ObjectDictionaryData Data;
+    public static Action<Panoply> OnPanoplyDeserialized;
+    public static Action<Recipe> OnRecipeDeserialized;
+
+    private Panoply _panoply;
+    private Recipe _recipe;
 
     private void Start() 
     {
         TextAsset objectsJson = Resources.Load<TextAsset>("objets");
-        Data = JsonConvert.DeserializeObject<ObjectDictionaryData>(objectsJson.text);
+        _panoply = JsonConvert.DeserializeObject<Panoply>(objectsJson.text);
         ConvertCoordsForUnity();
-        OnDataDeserialized?.Invoke(Data);
+        OnPanoplyDeserialized?.Invoke(_panoply);
+
+        TextAsset matriceJson = Resources.Load<TextAsset>("matrice");
+        _recipe = JsonConvert.DeserializeObject<Recipe>(matriceJson.text);
+        OnRecipeDeserialized?.Invoke(_recipe);
     }
 
     private void ConvertCoordsForUnity() 
     {
-        foreach (KeyValuePair<string, ObjectData> obj in Data.objets) {
+        foreach (KeyValuePair<string, ObjectData> obj in _panoply.objets) {
             obj.Value.y = Screen.height - obj.Value.y; // Invert y axis
             // Vector2Int screenCenter = new Vector2Int(Screen.width/2, Screen.height/2);
             // obj.y = screenCenter.y - screenCenter.y - obj.y;
@@ -29,8 +36,11 @@ public class ObjectParser : MonoBehaviour
     }
 }
 
+
+//* Objects *//
+
 [System.Serializable]
-public class ObjectDictionaryData {
+public class Panoply {
     public Dictionary<string, ObjectData> objets = new Dictionary<string, ObjectData>();
 }
 
@@ -53,4 +63,20 @@ public class ImageData {
 [System.Serializable]
 public class ClefsData {
     public int x, y;
+}
+
+//* Recipe *//
+
+[System.Serializable]
+public class Recipe
+{
+    public Dictionary<string, Dictionary<string, RecipeResult>> étapes;
+    public List<string> erreurFeedbacks;
+}
+
+[System.Serializable]
+public class RecipeResult 
+{
+    public string[] postconditions;
+    public string message;
 }
