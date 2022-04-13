@@ -6,7 +6,6 @@ using UnityEngine;
 public class Interactable : MonoBehaviour, IComparable<Interactable>
 {
     public static Action<string> OnMessage;
-    public bool IsHomeAppliance;
     public string Key { get => objectID + "/" + _stateStrings[_stateIndex]; }
 
     private Transform _transform;
@@ -35,7 +34,6 @@ public class Interactable : MonoBehaviour, IComparable<Interactable>
     public void Init(KeyValuePair<string, ObjectData> data) {
         gameObject.name = data.Value.nom;
         objectID = data.Key;
-        IsHomeAppliance = data.Value.type.Equals("électroménager");
         IsMobile = data.Value.mobile;
         transform.position = new Vector2(data.Value.x, data.Value.y).ToWorldPos();
         _defaultPos = transform.position;
@@ -65,8 +63,9 @@ public class Interactable : MonoBehaviour, IComparable<Interactable>
     
     private void OnMouseUpAsButton() 
     {
-        if (IsHomeAppliance)
-            SetStateIndex(1);
+        string feedback = RecipeManager.Instance.Interact(Key, "self");
+        if (feedback.Length > 0)
+            OnMessage?.Invoke(feedback);
     }
 
     public void OnBeginDrag() 
@@ -85,6 +84,7 @@ public class Interactable : MonoBehaviour, IComparable<Interactable>
 
     public void OnEndDrag() 
     {
+        if (!IsMobile) return;
         string feedback = InteractWithDestination();
         OnMessage?.Invoke(feedback);
         _interactablesInRange.Clear();
@@ -112,7 +112,7 @@ public class Interactable : MonoBehaviour, IComparable<Interactable>
             _interactablesInRange.Sort();
             foreach (Interactable interactable in _interactablesInRange)
             {
-                string newFeedback = RecipeManager.Instance.Interact(this, interactable);
+                string newFeedback = RecipeManager.Instance.Interact(Key, interactable.Key);
                 if (newFeedback.Length > 0) {
                     feedback = newFeedback;
                     break;

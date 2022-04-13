@@ -36,11 +36,11 @@ public class RecipeManager : MonoBehaviour
         _recipe = JsonConvert.DeserializeObject<Recipe>(matriceJson.text);
     }
 
-    public string Interact(Interactable from, Interactable to)
+    public string Interact(string fromKey, string toKey)
     {
-        if (_recipe.étapes.TryGetValue(from.Key, out Dictionary<string, RecipeResult> tos))
+        if (_recipe.étapes.TryGetValue(fromKey, out Dictionary<string, RecipeResult> tos))
         {
-            if (tos.TryGetValue(to.Key, out RecipeResult result))
+            if (tos.TryGetValue(toKey, out RecipeResult result))
             {
                 foreach(string postCondition in result.postconditions)
                     SetPostCondition(postCondition);

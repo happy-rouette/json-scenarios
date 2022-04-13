@@ -38,7 +38,7 @@
 		},
 		"cuisson/éteint": {
 			"self":  {
-				"postconditions": ["cuisson/allumé", "saladier/blanc"],
+				"postconditions": ["cuisson/allumé"],
 				"message":  "La table de cuisson a été allumée"
 			}
 		},
