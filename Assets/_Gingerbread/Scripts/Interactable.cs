@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour, IComparable<Interactable>
 {
-    public static Action<string> OnMessage;
+    public static Action<string, MessageType> OnMessage;
     public string Key { get => objectID + "/" + _stateStrings[_stateIndex]; }
 
     private Transform _transform;
@@ -65,7 +65,7 @@ public class Interactable : MonoBehaviour, IComparable<Interactable>
     {
         string feedback = RecipeManager.Instance.Interact(Key, "self");
         if (feedback.Length > 0)
-            OnMessage?.Invoke(feedback);
+            OnMessage?.Invoke(feedback, MessageType.Error);
     }
 
     public void OnBeginDrag() 
@@ -86,7 +86,7 @@ public class Interactable : MonoBehaviour, IComparable<Interactable>
     {
         if (!IsMobile) return;
         string feedback = InteractWithDestination();
-        OnMessage?.Invoke(feedback);
+        OnMessage?.Invoke(feedback, MessageType.Good);
         _interactablesInRange.Clear();
 
         transform.position = _defaultPos;

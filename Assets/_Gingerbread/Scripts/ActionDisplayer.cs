@@ -5,12 +5,12 @@ using UnityEngine;
 
 public class ActionDisplayer : MonoBehaviour
 {
-    private TextMeshProUGUI _actionText;
+    [SerializeField] private TextMeshProUGUI _directActionText;
+
     private Interactable _firstInteractable;
 
     private void Start() 
     {
-        _actionText = GetComponent<TextMeshProUGUI>();
-        Interactable.OnMessage += (msg) => _actionText.text = msg;
+        Interactable.OnMessage += (msg, type) => _directActionText.text = "<sprite index=" + ((int) type) + "> " + msg;
     }
 }

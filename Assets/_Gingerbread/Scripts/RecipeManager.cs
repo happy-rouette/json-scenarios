@@ -6,6 +6,7 @@ using Newtonsoft.Json;
 using System.IO;
 using System.Linq;
 
+public enum MessageType { Good, Warning, Error }
 
 public class RecipeManager : MonoBehaviour
 {
