@@ -25,9 +25,9 @@ public class ActionDisplayer : MonoBehaviour
             Destroy(child.gameObject);
     }
 
-    private void DisplayMessage(string msg, MessageType type)
+    private void DisplayMessage(Message msg)
     {
-        string text = "<sprite index=" + ((int) type) + "> " + msg;
+        string text = (msg.Type != MessageType.None ? "<sprite index=" + ((int) msg.Type) + "> " : "") + msg.Text;
 
         _directActionText.text = text;
 

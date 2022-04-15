@@ -5,8 +5,21 @@ using UnityEngine;
 using Newtonsoft.Json;
 using System.IO;
 using System.Linq;
+using System;
 
-public enum MessageType { Good, Warning, Error }
+public enum MessageType { None = -1, Good, Warning, Error }
+
+public class Message
+{
+    public MessageType Type;
+    public string Text;
+
+    public Message(string type, string msg)
+    {
+        Text = msg;
+        Type = (MessageType) Enum.Parse(typeof(MessageType), type, true);
+    }
+}
 
 public class RecipeManager : MonoBehaviour
 {
@@ -33,7 +46,7 @@ public class RecipeManager : MonoBehaviour
         DataParser.OnRecipeDeserialized += (recipe) => _recipe = recipe;
     }
 
-    public string Interact(string fromKey, string toKey)
+    public Message Interact(string fromKey, string toKey)
     {
         if (_recipe.étapes.TryGetValue(fromKey, out Dictionary<string, RecipeResult> tos))
         {
@@ -41,10 +54,10 @@ public class RecipeManager : MonoBehaviour
             {
                 foreach(string postCondition in result.postconditions)
                     SetPostCondition(postCondition);
-                return result.message;
+                return new Message(result.messageType, result.message);
             }
         }
-        return "";
+        return null;
     }
 
     private void SetPostCondition(string postCondition) 

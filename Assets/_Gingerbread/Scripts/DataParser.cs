@@ -78,5 +78,6 @@ public class Recipe
 public class RecipeResult 
 {
     public string[] postconditions;
+    public string messageType;
     public string message;
 }

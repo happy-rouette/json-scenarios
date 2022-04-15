@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class Interactable : MonoBehaviour, IComparable<Interactable>
 {
-    public static Action<string, MessageType> OnMessage;
+    public static Action<Message> OnMessage;
     public string Key { get => objectID + "/" + _stateStrings[_stateIndex]; }
 
     private Transform _transform;
@@ -63,9 +63,9 @@ public class Interactable : MonoBehaviour, IComparable<Interactable>
     
     private void OnMouseUpAsButton() 
     {
-        string feedback = RecipeManager.Instance.Interact(Key, "self");
-        if (feedback.Length > 0)
-            OnMessage?.Invoke(feedback, MessageType.Error);
+        Message feedback = RecipeManager.Instance.Interact(Key, "self");
+        if (feedback != null)
+            OnMessage?.Invoke(feedback);
     }
 
     public void OnBeginDrag() 
@@ -85,8 +85,8 @@ public class Interactable : MonoBehaviour, IComparable<Interactable>
     public void OnEndDrag() 
     {
         if (!IsMobile) return;
-        string feedback = InteractWithDestination();
-        OnMessage?.Invoke(feedback, MessageType.Good);
+        Message feedback = InteractWithDestination();
+        OnMessage?.Invoke(feedback);
         _interactablesInRange.Clear();
 
         transform.position = _defaultPos;
@@ -105,15 +105,15 @@ public class Interactable : MonoBehaviour, IComparable<Interactable>
             _interactablesInRange.Remove(interactable);
     }
 
-    private string InteractWithDestination() {
-        string feedback = RecipeManager.Instance.errorFeedback;
+    private Message InteractWithDestination() {
+        Message feedback = new Message("error", RecipeManager.Instance.errorFeedback);
         // Find the nearest interactable to interact with
         if (_interactablesInRange.Count > 0) {
             _interactablesInRange.Sort();
             foreach (Interactable interactable in _interactablesInRange)
             {
-                string newFeedback = RecipeManager.Instance.Interact(Key, interactable.Key);
-                if (newFeedback.Length > 0) {
+                Message newFeedback = RecipeManager.Instance.Interact(Key, interactable.Key);
+                if (newFeedback != null) {
                     feedback = newFeedback;
                     break;
                 }
