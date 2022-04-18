@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 using UnityEngine;
 
 public static class Extensions
@@ -26,5 +27,19 @@ public static class Extensions
         if (dictionary.ContainsKey(key))
             dictionary[key] = value;
         else dictionary.Add(key, value);
+    }
+
+    public static string SplitCamelCaseToLower(this string str)
+    {
+        // var r = new Regex(@"
+        //     (?<=[A-Z])(?=[A-Z][a-z]) |
+        //     (?<=[^A-Z])(?=[A-Z]) |
+        //     (?<=[A-Za-z])(?=[^A-Za-z])",
+        //     RegexOptions.IgnorePatternWhitespace
+        // );
+        
+        // return r.Replace(str, " ").ToLower();
+
+        return string.Join(" ", Regex.Split(str, @"(?<!^)(?=[A-Z](?![A-Z]|$))")).ToLower();
     }
 }

@@ -1,129 +1,94 @@
 {
 	"étapes": {
-		"farine/neuf": {
-			"doseur/vide": {
-				"postconditions": ["farine/entamé", "doseur/plein"],
-				"messageType": "good",
-				"message": "200g de farine ont été versés dans le verre doseur"
-			}
+		"farine/neuf+doseur/vide": {
+			"postconditions": ["farine/entamé", "doseur/plein"],
+			"messageType": "good",
+			"message": "200g de farine ont été versés dans le verre doseur"
 		},
-		"doseur/plein": {
-			"saladier/propre":  {
-				"postconditions": ["doseur/vide", "saladier/blanc"],
-				"messageType": "good",
-				"message":  "200g de farine ont été transvasés dans le saladier"
-			}
+		"doseur/plein+saladier/propre": {
+			"postconditions": ["doseur/vide", "saladier/blanc"],
+			"messageType": "good",
+			"message":  "200g de farine ont été transvasés dans le saladier"
 		},
-		"oeuf/frais": {
-			"saladier/blanc":  {
-				"postconditions": ["oeuf/cassé", "saladier/oeuf"],
-				"messageType": "good",
-				"message":  "2 oeufs ont été cassés dans le saladier"
-			}
+		"oeuf/frais+saladier/blanc": {
+			"postconditions": ["oeuf/cassé", "saladier/oeuf"],
+			"messageType": "good",
+			"message":  "2 oeufs ont été cassés dans le saladier"
 		},
-		"sucre/plein": {
-			"saladier/blanc":  {
+		"sucre/plein+saladier/blanc": {
+			"postconditions": [],
+			"messageType": "good",
+			"message":  "Le sucre a été ajouté dans le saladier"
+		},
+		"sucre/plein+saladier/oeuf": {
 				"postconditions": [],
-				"messageType": "good",
-				"message":  "Le sucre a été ajouté dans le saladier"
-			}
+				"messageType": "warning",
+				"message":  "Le sucre doit être ajouté avant les oeufs"
 		},
-		"épices/plein": {
-			"saladier/oeuf":  {
-				"postconditions": ["saladier/presqueTout"],
-				"messageType": "good",
-				"message":  "Les épices ont été ajoutées dans le saladier"
-			}
+		"épices/plein+saladier/oeuf": {
+			"postconditions": ["saladier/presqueTout"],
+			"messageType": "good",
+			"message":  "Les épices ont été ajoutées dans le saladier"
 		},
-		"lait/plein": {
-			"casserole/vide": {
-				"postconditions": ["lait/entamé", "casserole/pleine"],
-				"messageType": "good",
-				"message":  "Le lait a été versé dans la casserole"
-			}
+		"lait/plein+casserole/vide": {
+			"postconditions": ["lait/entamé", "casserole/pleine"],
+			"messageType": "good",
+			"message":  "Le lait a été versé dans la casserole"
 		},
-		"cuisson/éteint": {
-			"self":  {
-				"postconditions": ["cuisson/allumé"],
-				"messageType": "good",
-				"message":  "La table de cuisson a été allumée"
-			}
+		"cuisson/éteint+self": {
+			"postconditions": ["cuisson/allumé"],
+			"messageType": "good",
+			"message":  "La table de cuisson a été allumée"
 		},
-		"cuisson/allumé": {
-			"self":  {
-				"postconditions": ["cuisson/éteint"],
-				"messageType": "good",
-				"message":  "La table de cuisson a été éteinte"
-			}
+		"cuisson/allumé+self": {
+			"postconditions": ["cuisson/éteint"],
+			"messageType": "good",
+			"message":  "La table de cuisson a été éteinte"
 		},
-		"casserole/pleine": {
-			"cuisson/allumé":  {
-				"postconditions": ["cuisson/éteint", "casserole/chaude"],
-				"messageType": "good",
-				"message":  "La casserole de lait a été mise à tiédir"
-			}
+		"casserole/pleine+cuisson/allumé": {
+			"postconditions": ["cuisson/éteint", "casserole/chaude"],
+			"messageType": "good",
+			"message":  "La casserole de lait a été mise à tiédir"
 		},
-		"casserole/chaude": {
-			"saladier/presqueTout":  {
-				"postconditions": ["casserole/vide", "saladier/tout"],
-				"messageType": "good",
-				"message":  "La lait tiède a été versé dans le saladier"
-			}
+		"casserole/chaude+saladier/presqueTout": {
+			"postconditions": ["casserole/vide", "saladier/tout"],
+			"messageType": "good",
+			"message":  "La lait tiède a été versé dans le saladier"
 		},
-		"miel/plein": {
-			"saladier/tout":  {
-				"postconditions": [],
-				"messageType": "good",
-				"message":  "Le miel a été ajouté dans le saladier"
-			}
+		"miel/plein+saladier/tout": {
+			"postconditions": [],
+			"messageType": "good",
+			"message":  "Le miel a été ajouté dans le saladier"
 		},
-		"spatule/propre": {
-			"saladier/tout":  {
-				"postconditions": ["spatule/sale", "saladier/mélangé"],
-				"messageType": "good",
-				"message":  "Les ingrédients ont été mélangés"
-			}
+		"spatule/propre+saladier/tout": {
+			"postconditions": ["spatule/sale", "saladier/mélangé"],
+			"messageType": "good",
+			"message":  "Les ingrédients ont été mélangés"
 		},
-		"four/éteint": {
-			"self":  {
-				"postconditions": ["four/allumé"],
-				"messageType": "good",
-				"message":  "Le four a été allumé"
-			}
+		"four/éteint+self": {
+			"postconditions": ["four/allumé"],
+			"messageType": "good",
+			"message":  "Le four a été allumé"
 		},
-		"four/allumé": {
-			"self":  {
-				"postconditions": ["four/éteint"],
-				"messageType": "good",
-				"message":  "Le four a été éteint" 
-			}
+		"four/allumé+self": {
+			"postconditions": ["four/éteint"],
+			"messageType": "good",
+			"message":  "Le four a été éteint"
 		},
-		"saladier/mélangé": {
-			"moule/vide": {
-				"postconditions": ["saladier/sale", "moule/plein"],
-				"messageType": "good",
-				"message":  "La préparation a été versée dans le moule"
-			}
+		"saladier/mélangé+moule/vide": {
+			"postconditions": ["saladier/sale", "moule/plein"],
+			"messageType": "good",
+			"message":  "La préparation a été versée dans le moule"
 		},
-		"moule/plein": {
-			"four/allumé":  {
-				"postconditions": ["four/éteint", "moule/cuit"],
-				"messageType": "good",
-				"message":  "Le pain d'épice est terminé !"
-			}
+		"moule/plein+four/allumé": {
+			"postconditions": ["four/éteint", "moule/cuit"],
+			"messageType": "good",
+			"message":  "Le pain d'épice est terminé !"
 		},
-		"moule/cuit": {
-			"four/allumé": {
-				"postconditions": ["four/éteint", "moule/brulé"],
-				"messageType": "good",
-				"message":  "Bravo ! Le pain d'épice est cramé !"
-			}
+		"moule/cuit+four/allumé": {
+			"postconditions": ["four/éteint", "moule/brulé"],
+			"messageType": "error",
+			"message":  "Bravo ! Le pain d'épice est cramé !"
 		}
-	},
-	"erreurFeedbacks" : [
-		"Fais pas le fou", "Cheh",
-        "Non non non petit fripouillot",
-        "Abuse pas", "Nope",
-        "J'ai pas hâte de gouter ton gâteau"
-	]
+	}
 }

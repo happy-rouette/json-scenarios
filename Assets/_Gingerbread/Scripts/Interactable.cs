@@ -7,6 +7,14 @@ public class Interactable : MonoBehaviour, IComparable<Interactable>
 {
     public static Action<Message> OnMessage;
     public string Key { get => objectID + "/" + _stateStrings[_stateIndex]; }
+    public string KeyMagnified 
+    { 
+        get 
+        {
+            string stateToString = _stateStrings[_stateIndex].SplitCamelCaseToLower();
+            return objectID + " (" + stateToString + ")";
+        }
+    }
 
     private Transform _transform;
     private SpriteRenderer _spriteRenderer;
@@ -106,10 +114,13 @@ public class Interactable : MonoBehaviour, IComparable<Interactable>
     }
 
     private Message InteractWithDestination() {
-        Message feedback = new Message("error", RecipeManager.Instance.errorFeedback);
+        Message feedback = new Message("none", "");
         // Find the nearest interactable to interact with
         if (_interactablesInRange.Count > 0) {
             _interactablesInRange.Sort();
+            feedback = new Message("error", 
+                "Impossible d'associer " + KeyMagnified + " avec " + _interactablesInRange[0].KeyMagnified
+            );
             foreach (Interactable interactable in _interactablesInRange)
             {
                 Message newFeedback = RecipeManager.Instance.Interact(Key, interactable.Key);

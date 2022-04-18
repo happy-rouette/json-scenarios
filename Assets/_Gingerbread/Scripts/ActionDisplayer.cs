@@ -27,10 +27,12 @@ public class ActionDisplayer : MonoBehaviour
 
     private void DisplayMessage(Message msg)
     {
-        string text = (msg.Type != MessageType.None ? "<sprite index=" + ((int) msg.Type) + "> " : "") + msg.Text;
-
+        string text = (msg.Type != MessageType.None ? 
+            "<sprite index=" + ((int) msg.Type) + "> " : ""
+        ) + msg.Text;
+        
         _directActionText.text = text;
-
-        Instantiate(_actionTextPrefab, _scrollContainer).text = text;
+        if (msg.Text.Length > 0)
+            Instantiate(_actionTextPrefab, _scrollContainer).text = text;
     }
 }

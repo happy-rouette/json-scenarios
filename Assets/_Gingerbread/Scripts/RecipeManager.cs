@@ -1,3 +1,4 @@
+using System.Security.Principal;
 using System.Net.Mail;
 using System.Collections;
 using System.Collections.Generic;
@@ -26,11 +27,6 @@ public class RecipeManager : MonoBehaviour
     public static RecipeManager Instance;
 
     private Recipe _recipe;
-
-    [HideInInspector] public string errorFeedback
-    {
-        get => _recipe.erreurFeedbacks[UnityEngine.Random.Range(0, _recipe.erreurFeedbacks.Count)];
-    }
     
 
     private void Awake() 
@@ -48,14 +44,12 @@ public class RecipeManager : MonoBehaviour
 
     public Message Interact(string fromKey, string toKey)
     {
-        if (_recipe.étapes.TryGetValue(fromKey, out Dictionary<string, RecipeResult> tos))
+        string key = fromKey + "+" + toKey;
+        if (_recipe.étapes.TryGetValue(key, out RecipeResult result))
         {
-            if (tos.TryGetValue(toKey, out RecipeResult result))
-            {
-                foreach(string postCondition in result.postconditions)
-                    SetPostCondition(postCondition);
-                return new Message(result.messageType, result.message);
-            }
+            foreach(string postCondition in result.postconditions)
+                SetPostCondition(postCondition);
+            return new Message(result.messageType, result.message);
         }
         return null;
     }

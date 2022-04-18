@@ -70,8 +70,7 @@ public class ClefsData {
 [System.Serializable]
 public class Recipe
 {
-    public Dictionary<string, Dictionary<string, RecipeResult>> étapes;
-    public List<string> erreurFeedbacks;
+    public Dictionary<string, RecipeResult> étapes;
 }
 
 [System.Serializable]
