@@ -55,10 +55,20 @@
 			"messageType": "good",
 			"message":  "La lait tiède a été versé dans le saladier"
 		},
+		"casserole/pleine+saladier/presqueTout": {
+			"postconditions": ["casserole/vide", "saladier/tout"],
+			"messageType": "warning",
+			"message":  "La lait doit être tiédi avant d'être versé dans le saladier"
+		},
 		"miel/plein+saladier/tout": {
 			"postconditions": [],
 			"messageType": "good",
 			"message":  "Le miel a été ajouté dans le saladier"
+		},
+		"miel/plein+saladier/presqueTout": {
+			"postconditions": [],
+			"messageType": "error",
+			"message":  "Le lait a été oublié avant d'ajouter le miel"
 		},
 		"spatule/propre+saladier/tout": {
 			"postconditions": ["spatule/sale", "saladier/mélangé"],
