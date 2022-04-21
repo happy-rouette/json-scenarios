@@ -25,7 +25,7 @@ public class ObjectsManager : MonoBehaviour
 
     private void Start() 
     {
-        Sprite bgSprite = Resources.Load<Sprite>("ObjectSprites/scène");
+        Sprite bgSprite = Resources.Load<Sprite>("ObjectSprites/Cooking/scène");
         _backgroundRenderer.sprite = bgSprite;
     }
 

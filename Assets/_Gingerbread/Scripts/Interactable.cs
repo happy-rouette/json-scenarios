@@ -45,7 +45,7 @@ public class Interactable : MonoBehaviour, IComparable<Interactable>
         IsMobile = data.Value.mobile;
         transform.position = new Vector2(data.Value.x, data.Value.y).ToWorldPos();
         _defaultPos = transform.position;
-        _stateSprites = Resources.LoadAll<Sprite>("ObjectSprites/" + data.Value.image.src);
+        _stateSprites = Resources.LoadAll<Sprite>(data.Value.image.src);
         _spriteRenderer.sprite = _stateSprites[0];
         _stateStrings = data.Value.etats;
         GetComponent<BoxCollider2D>().size = _spriteRenderer.bounds.size;
