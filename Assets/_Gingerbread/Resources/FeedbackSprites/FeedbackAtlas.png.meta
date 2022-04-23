@@ -11,6 +11,9 @@ TextureImporter:
   - first:
       213: 390096802305640277
     second: FeedbackAtlas_2
+  - first:
+      213: -103104596690211698
+    second: FeedbackAtlas_3
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -182,6 +185,27 @@ TextureImporter:
       bones: []
       spriteID: 557817199f6e96500800000000000000
       internalID: 390096802305640277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: FeedbackAtlas_3
+      rect:
+        serializedVersion: 2
+        x: 72
+        y: 0
+        width: 24
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8ce1936ae2b19ef0800000000000000
+      internalID: -103104596690211698
       vertices: []
       indices: 
       edges: []

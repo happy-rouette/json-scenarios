@@ -93,6 +93,12 @@ MonoBehaviour:
     m_Scale: 1
     m_Name: FeedbackAtlas_2
     m_HashCode: 219842735
+  - m_ElementType: 2
+    m_Unicode: 65534
+    m_GlyphIndex: 3
+    m_Scale: 1
+    m_Name: FeedbackAtlas_3
+    m_HashCode: 219842734
   m_SpriteGlyphTable:
   - m_Index: 0
     m_Metrics:
@@ -139,5 +145,20 @@ MonoBehaviour:
     m_Scale: 1
     m_AtlasIndex: 0
     sprite: {fileID: 390096802305640277, guid: 045df0b0ebd439849abdcb10238f45a0, type: 3}
+  - m_Index: 3
+    m_Metrics:
+      m_Width: 24
+      m_Height: 24
+      m_HorizontalBearingX: 0
+      m_HorizontalBearingY: 21
+      m_HorizontalAdvance: 23
+    m_GlyphRect:
+      m_X: 72
+      m_Y: 0
+      m_Width: 24
+      m_Height: 24
+    m_Scale: 1
+    m_AtlasIndex: 0
+    sprite: {fileID: -103104596690211698, guid: 045df0b0ebd439849abdcb10238f45a0, type: 3}
   spriteInfoList: []
   fallbackSpriteAssets: []
