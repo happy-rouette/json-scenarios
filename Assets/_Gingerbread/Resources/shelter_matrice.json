@@ -104,6 +104,31 @@
 			"postconditions": ["moule/vide", "cabane/finie"],
 			"messageType": "good",
 			"message": "Votre cabane est prête à vous accueillir !"
+		},
+		"moule/pleinDeTerre+self": {
+			"postconditions": ["moule/vide"],
+			"messageType": "reset",
+			"message": "La terre a été retirée du moule"
+		},
+		"terre/paille+self": {
+			"postconditions": ["terre/humide", "herbe/coupée"],
+			"messageType": "reset",
+			"message": "La paille a été retirée de la terre"
+		},
+		"moule/tuile+self": {
+			"postconditions": ["moule/vide"],
+			"messageType": "reset",
+			"message": "Création d'une tuile annulée"
+		},
+		"moule/pleinDeSable+self": {
+			"postconditions": ["moule/vide", "sable/tas"],
+			"messageType": "reset",
+			"message": "Le sable a été retiré du moule"
+		},
+		"moule/verre+self": {
+			"postconditions": ["moule/vide", "sable/tas"],
+			"messageType": "reset",
+			"message": "Création de la plaque de verre annulée"
 		}
 	}
 }

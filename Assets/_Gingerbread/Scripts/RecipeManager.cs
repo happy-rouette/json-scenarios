@@ -8,7 +8,7 @@ using System.IO;
 using System.Linq;
 using System;
 
-public enum MessageType { None = -1, Good, Warning, Error }
+public enum MessageType { None = -1, Good, Warning, Error, Reset }
 
 public class Message
 {
