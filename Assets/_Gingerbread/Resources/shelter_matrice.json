@@ -129,6 +129,61 @@
 			"postconditions": ["moule/vide", "sable/tas"],
 			"messageType": "reset",
 			"message": "Création de la plaque de verre annulée"
+		},
+		"herbe/quiPousse+terre/humide": {
+			"postconditions": [],
+			"messageType": "warning",
+			"message": "Il faut couper l'herbe avant de l'ajouter à la terre pour qu'elle sèche et forme des fibres plus solides"
+		},
+		"terre/sèche+moule/vide": {
+			"postconditions": [],
+			"messageType": "warning",
+			"message": "Une terre non humidifiée dans le moule ne formera pas un mélange coagulant"
+		},
+		"herbe/coupée+terre/sèche": {
+			"postconditions": [],
+			"messageType": "warning",
+			"message": "Une terre non humidifiée avec la paille ne formera pas un mélange coagulant"
+		},
+		"terre/paille+cabane/charpente": {
+			"postconditions": [],
+			"messageType": "warning",
+			"message": "Il faudrait plus de bâtons pour que les murs soient mieux supportés"
+		},
+		"terre/paille+cabane/support": {
+			"postconditions": [],
+			"messageType": "warning",
+			"message": "Avant les murs il faut placer le toit, pour protéger contre l'humidité"
+		},
+		"moule/tuile+cabane/charpente": {
+			"postconditions": [],
+			"messageType": "warning",
+			"message": "Il faudrait plus de bâtons pour que les tuiles soient mieux supportées"
+		},
+		"bois/planches+cabane/mursEnTerre": {
+			"postconditions": [],
+			"messageType": "warning",
+			"message": "Sans enduit à la chaux votre cabane ne sera pas hermétique"
+		},
+		"moule/verre+cabane/mursEnTerre": {
+			"postconditions": [],
+			"messageType": "warning",
+			"message": "Sans enduit à la chaux votre cabane ne sera pas hermétique"
+		},
+		"seau/plein+chaux/poudre": {
+			"postconditions": ["chaux/humide"],
+			"messageType": "warning",
+			"message": "La chaux se mélangera moins si l'on verse l'eau dessus, il vaut mieux faire l'inverse"
+		},
+		"moule/verre+cabane/toit": {
+			"postconditions": [],
+			"messageType": "warning",
+			"message": "Avant de poser les fenêtres il serait bien de finir les murs"
+		},
+		"bois/planches+cabane/toit": {
+			"postconditions": [],
+			"messageType": "warning",
+			"message": "Avant de poser la porte il serait bien de finir les murs"
 		}
 	}
 }
