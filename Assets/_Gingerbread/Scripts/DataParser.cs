@@ -15,12 +15,12 @@ public class DataParser : MonoBehaviour
 
     private void Start() 
     {
-        TextAsset objectsJson = Resources.Load<TextAsset>("objets_cooking");
+        TextAsset objectsJson = Resources.Load<TextAsset>("shelter_objets");
         _panoply = JsonConvert.DeserializeObject<Panoply>(objectsJson.text);
         ConvertCoordsForUnity();
         OnPanoplyDeserialized?.Invoke(_panoply);
 
-        TextAsset matriceJson = Resources.Load<TextAsset>("matrice_cooking");
+        TextAsset matriceJson = Resources.Load<TextAsset>("shelter_matrice");
         _recipe = JsonConvert.DeserializeObject<Recipe>(matriceJson.text);
         OnRecipeDeserialized?.Invoke(_recipe);
     }
