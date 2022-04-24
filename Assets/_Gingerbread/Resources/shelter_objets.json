@@ -98,7 +98,7 @@
 				"clefs": {"x":3, "y":1}
 			}
 		},
-		"batons": {
+		"bâtons": {
 			"nom": "bâtons",
 			"type": "ingrédient",
 			"etats": ["tas", "petitTas", "finis"],

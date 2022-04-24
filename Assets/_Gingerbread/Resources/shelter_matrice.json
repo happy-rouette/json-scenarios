@@ -1,104 +1,109 @@
 {
 	"étapes": {
-		"farine/neuf+doseur/vide": {
-			"postconditions": ["farine/entamé", "doseur/plein"],
+		"seau/plein+terre/sèche": {
+			"postconditions": ["terre/humide"],
 			"messageType": "good",
-			"message": "200g de farine ont été versés dans le verre doseur"
+			"message": "La terre a été humidifiée"
 		},
-		"doseur/plein+saladier/propre": {
-			"postconditions": ["doseur/vide", "saladier/blanc"],
+		"feu/allumé+self": {
+			"postconditions": ["feu/éteint"],
 			"messageType": "good",
-			"message":  "200g de farine ont été transvasés dans le saladier"
+			"message": "Le feu a été éteint"
 		},
-		"oeuf/frais+saladier/blanc": {
-			"postconditions": ["oeuf/cassé", "saladier/oeuf"],
+		"feu/éteint+self": {
+			"postconditions": ["feu/allumé"],
 			"messageType": "good",
-			"message":  "2 oeufs ont été cassés dans le saladier"
+			"message": "Le feu a été allumé"
 		},
-		"sucre/plein+saladier/blanc": {
-			"postconditions": [],
+		"faux/enBonEtat+herbe/quiPousse": {
+			"postconditions": ["herbe/coupée"],
 			"messageType": "good",
-			"message":  "Le sucre a été ajouté dans le saladier"
+			"message": "L'herbe a été coupée"
 		},
-		"sucre/plein+saladier/oeuf": {
-				"postconditions": [],
-				"messageType": "warning",
-				"message":  "Le sucre doit être ajouté avant les oeufs"
-		},
-		"épices/plein+saladier/oeuf": {
-			"postconditions": ["saladier/presqueTout"],
+		"terre/humide+moule/vide": {
+			"postconditions": ["moule/pleinDeTerre", "terre/sèche"],
 			"messageType": "good",
-			"message":  "Les épices ont été ajoutées dans le saladier"
+			"message": "Le moule a été rempli de terre humide"
 		},
-		"lait/plein+casserole/vide": {
-			"postconditions": ["lait/entamé", "casserole/pleine"],
+		"bâtons/tas+cabane/base": {
+			"postconditions": ["bâtons/petitTas", "cabane/charpente"],
 			"messageType": "good",
-			"message":  "Le lait a été versé dans la casserole"
+			"message": "Mise en place de la charpente"
 		},
-		"cuisson/éteint+self": {
-			"postconditions": ["cuisson/allumé"],
+		"herbe/coupée+terre/humide": {
+			"postconditions": ["terre/paille", "herbe/finie"],
 			"messageType": "good",
-			"message":  "La table de cuisson a été allumée"
+			"message": "La paille a été mélangée avec la terre"
 		},
-		"cuisson/allumé+self": {
-			"postconditions": ["cuisson/éteint"],
+		"moule/pleinDeTerre+feu/allumé": {
+			"postconditions": ["moule/tuile"],
 			"messageType": "good",
-			"message":  "La table de cuisson a été éteinte"
+			"message": "Chauffer la plaque de terre a produit une tuile"
 		},
-		"casserole/pleine+cuisson/allumé": {
-			"postconditions": ["cuisson/éteint", "casserole/chaude"],
+		"bâtons/petitTas+cabane/charpente": {
+			"postconditions": ["bâtons/finis", "cabane/support"],
 			"messageType": "good",
-			"message":  "La casserole de lait a été mise à tiédir"
+			"message": "La charpente a été densifiée pour servir de support aux matériaux suivants"
 		},
-		"casserole/chaude+saladier/presqueTout": {
-			"postconditions": ["casserole/vide", "saladier/tout"],
+		"moule/tuile+cabane/support": {
+			"postconditions": ["moule/vide", "cabane/toit"],
 			"messageType": "good",
-			"message":  "La lait tiède a été versé dans le saladier"
+			"message": "Toit construit"
 		},
-		"casserole/pleine+saladier/presqueTout": {
-			"postconditions": ["casserole/vide", "saladier/tout"],
-			"messageType": "warning",
-			"message":  "La lait doit être tiédi avant d'être versé dans le saladier"
-		},
-		"miel/plein+saladier/tout": {
-			"postconditions": [],
+		"terre/paille+cabane/toit": {
+			"postconditions": ["terre/sèche", "cabane/mursEnTerre"],
 			"messageType": "good",
-			"message":  "Le miel a été ajouté dans le saladier"
+			"message": "La terre-paille a été appliquée pour former les murs"
 		},
-		"miel/plein+saladier/presqueTout": {
-			"postconditions": [],
-			"messageType": "error",
-			"message":  "Le lait a été oublié avant d'ajouter le miel"
-		},
-		"spatule/propre+saladier/tout": {
-			"postconditions": ["spatule/sale", "saladier/mélangé"],
+		"chaux/calcaire+feu/allumé": {
+			"postconditions": ["chaux/poudre"],
 			"messageType": "good",
-			"message":  "Les ingrédients ont été mélangés"
+			"message": "Chauffé à 700 °C, le calcaire s'est transformé en chaux"
 		},
-		"four/éteint+self": {
-			"postconditions": ["four/allumé"],
+		"chaux/poudre+seau/plein": {
+			"postconditions": ["chaux/humide"],
 			"messageType": "good",
-			"message":  "Le four a été allumé"
+			"message": "La chaux a été humidifiée"
 		},
-		"four/allumé+self": {
-			"postconditions": ["four/éteint"],
+		"sable/tas+moule/vide": {
+			"postconditions": ["moule/pleinDeSable", "sable/fini"],
 			"messageType": "good",
-			"message":  "Le four a été éteint"
+			"message": "Le sable a été versé dans le moule"
 		},
-		"saladier/mélangé+moule/vide": {
-			"postconditions": ["saladier/sale", "moule/plein"],
+		"chaux/humide+cabane/mursEnTerre": {
+			"postconditions": ["chaux/finie", "cabane/enduitALaChaux"],
 			"messageType": "good",
-			"message":  "La préparation a été versée dans le moule"
+			"message": "L'enduit à la chaux a été appliqué sur les murs pour les rendre hermétiques"
 		},
-		"moule/plein+four/allumé": {
-			"postconditions": ["four/éteint", "moule/cuit"],
+		"moule/pleinDeSable+feu/allumé": {
+			"postconditions": ["moule/verre"],
 			"messageType": "good",
-			"message":  "Le pain d'épice est terminé !"
+			"message": "Entre 1500 et 2500 °C, le sable se transforme en verre"
 		},
-		"moule/cuit+four/allumé": {
-			"postconditions": ["four/éteint", "moule/brulé"],
-			"messageType": "error",
-			"message":  "Bravo ! Le pain d'épice est cramé !"
+		"hache/enBonEtat+bois/bûche": {
+			"postconditions": ["bois/planches"],
+			"messageType": "good",
+			"message": "Le bois a été fendu en planches"
+		},
+		"moule/verre+cabane/enduitALaChaux": {
+			"postconditions": ["moule/vide", "cabane/avecFenêtres"],
+			"messageType": "good",
+			"message": "Votre cabane possède des fenêtres"
+		},
+		"bois/planches+cabane/enduitALaChaux": {
+			"postconditions": ["bois/fini", "cabane/avecPorte"],
+			"messageType": "good",
+			"message": "Mise en place de la porte"
+		},
+		"bois/planches+cabane/avecFenêtres": {
+			"postconditions": ["bois/fini", "cabane/finie"],
+			"messageType": "good",
+			"message": "Votre cabane est prête à vous accueillir !"
+		},
+		"moule/verre+cabane/avecPorte": {
+			"postconditions": ["moule/vide", "cabane/finie"],
+			"messageType": "good",
+			"message": "Votre cabane est prête à vous accueillir !"
 		}
 	}
 }
