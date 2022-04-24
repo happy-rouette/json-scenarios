@@ -72,6 +72,7 @@ public class Interactable : MonoBehaviour, IComparable<Interactable>
     
     private void OnMouseUpAsButton() 
     {
+        if (_isBeingDragged) return;
         Message feedback = RecipeManager.Instance.Interact(Key, "self");
         if (feedback != null)
             OnMessage?.Invoke(feedback);
