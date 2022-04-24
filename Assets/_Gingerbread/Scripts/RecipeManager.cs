@@ -1,14 +1,7 @@
-using System.Security.Principal;
-using System.Net.Mail;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using Newtonsoft.Json;
-using System.IO;
-using System.Linq;
 using System;
 
-public enum MessageType { None = -1, Good, Warning, Error, Reset }
+public enum MessageType { None = -1, Good, Warning, Error, Reset, Gold }
 
 public class Message
 {

@@ -97,12 +97,12 @@
 		},
 		"bois/planches+cabane/avecFenêtres": {
 			"postconditions": ["bois/fini", "cabane/finie"],
-			"messageType": "good",
+			"messageType": "gold",
 			"message": "Votre cabane est prête à vous accueillir !"
 		},
 		"moule/verre+cabane/avecPorte": {
 			"postconditions": ["moule/vide", "cabane/finie"],
-			"messageType": "good",
+			"messageType": "gold",
 			"message": "Votre cabane est prête à vous accueillir !"
 		},
 		"moule/pleinDeTerre+self": {
@@ -184,6 +184,11 @@
 			"postconditions": [],
 			"messageType": "warning",
 			"message": "Avant de poser la porte il serait bien de finir les murs"
+		},
+		"bois/planches+cabane/support": {
+			"postconditions": [],
+			"messageType": "warning",
+			"message": "Pour le toit, des tuiles en terre cuite sont préférables aux planches"
 		}
 	}
 }
