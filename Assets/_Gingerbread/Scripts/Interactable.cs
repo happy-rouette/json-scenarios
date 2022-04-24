@@ -25,8 +25,9 @@ public class Interactable : MonoBehaviour, IComparable<Interactable>
 
     // Drag & Drop
     private Vector2 _mouseOffsetForDrag = Vector2.zero;
-    private bool IsMobile;
+    private bool _isMobile;
     private Vector2 _defaultPos;
+    private bool _isBeingDragged = false;
 
     // Drag interaction with other Interactables
     private static Interactable _grabbedInteractable;
@@ -42,7 +43,7 @@ public class Interactable : MonoBehaviour, IComparable<Interactable>
     public void Init(KeyValuePair<string, ObjectData> data) {
         gameObject.name = data.Value.nom;
         objectID = data.Key;
-        IsMobile = data.Value.mobile;
+        _isMobile = data.Value.mobile;
         transform.position = new Vector2(data.Value.x, data.Value.y).ToWorldPos();
         _defaultPos = transform.position;
         _stateSprites = Resources.LoadAll<Sprite>(data.Value.image.src);
@@ -78,7 +79,8 @@ public class Interactable : MonoBehaviour, IComparable<Interactable>
 
     public void OnBeginDrag() 
     {
-        if (!IsMobile) return;
+        if (!_isMobile) return;
+        _isBeingDragged = true;
         _mouseOffsetForDrag = _transform.position - Input.mousePosition.ToWorldPos();
         _spriteRenderer.sortingOrder = 100;
         _grabbedInteractable = this;
@@ -86,16 +88,16 @@ public class Interactable : MonoBehaviour, IComparable<Interactable>
 
     public void OnDrag() 
     {
-        if (!IsMobile) return;
+        if (!_isMobile) return;
         _transform.position = ((Vector2) Input.mousePosition.ToWorldPos()) + _mouseOffsetForDrag;
     }
 
     public void OnEndDrag() 
     {
-        if (!IsMobile) return;
+        if (!_isMobile) return;
+        _isBeingDragged = false;
         Message feedback = InteractWithDestination();
         OnMessage?.Invoke(feedback);
-        _interactablesInRange.Clear();
 
         transform.position = _defaultPos;
         _spriteRenderer.sortingOrder = 0;
