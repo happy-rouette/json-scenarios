@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectsManager : MonoBehaviour
+public class EnvironementManager : MonoBehaviour
 {
-    public static ObjectsManager Instance;
+    public static EnvironementManager Instance;
 
     [SerializeField] private Interactable _interactablePrefab;
     [SerializeField] private SpriteRenderer _backgroundRenderer;
@@ -20,12 +20,22 @@ public class ObjectsManager : MonoBehaviour
             DestroyImmediate(this);
         }
 
+        ScenarioChooser.OnScenarioChoosed += LoadScenarioBackground;
         DataParser.OnPanoplyDeserialized += SpawnObjects;
     } 
 
-    private void Start() 
+    private void LoadScenarioBackground(ScenarioType scenario) 
     {
-        Sprite bgSprite = Resources.Load<Sprite>("ObjectSprites/Shelter/Nature");
+        string bgPath = "";
+        switch(scenario) {
+            case ScenarioType.Cooking:
+                bgPath = "ObjectSprites/Cooking/scène";
+                break;
+            case ScenarioType.Shelter:
+                bgPath = "ObjectSprites/Shelter/Nature";
+                break;
+        }
+        Sprite bgSprite = Resources.Load<Sprite>(bgPath);
         _backgroundRenderer.sprite = bgSprite;
     }
 

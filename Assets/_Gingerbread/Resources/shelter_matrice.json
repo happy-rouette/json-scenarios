@@ -7,12 +7,12 @@
 		},
 		"feu/allumé+self": {
 			"postconditions": ["feu/éteint"],
-			"messageType": "good",
+			"messageType": "none",
 			"message": "Le feu a été éteint"
 		},
 		"feu/éteint+self": {
 			"postconditions": ["feu/allumé"],
-			"messageType": "good",
+			"messageType": "none",
 			"message": "Le feu a été allumé"
 		},
 		"faux/enBonEtat+herbe/quiPousse": {

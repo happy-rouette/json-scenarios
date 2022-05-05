@@ -13,14 +13,30 @@ public class DataParser : MonoBehaviour
     private Panoply _panoply;
     private Recipe _recipe;
 
-    private void Start() 
+    private void Awake() {
+        ScenarioChooser.OnScenarioChoosed += LoadScenarioData;
+    }
+
+    private void LoadScenarioData(ScenarioType scenario) 
     {
-        TextAsset objectsJson = Resources.Load<TextAsset>("shelter_objets");
+        string objectsPath = "", recipePath = "";
+        switch(scenario) {
+            case ScenarioType.Cooking:
+                objectsPath = "cooking_objets";
+                recipePath = "cooking_matrice";
+                break;
+            case ScenarioType.Shelter:
+                objectsPath = "shelter_objets";
+                recipePath = "shelter_matrice";
+                break;
+        }
+
+        TextAsset objectsJson = Resources.Load<TextAsset>(objectsPath);
         _panoply = JsonConvert.DeserializeObject<Panoply>(objectsJson.text);
         ConvertCoordsForUnity();
         OnPanoplyDeserialized?.Invoke(_panoply);
 
-        TextAsset matriceJson = Resources.Load<TextAsset>("shelter_matrice");
+        TextAsset matriceJson = Resources.Load<TextAsset>(recipePath);
         _recipe = JsonConvert.DeserializeObject<Recipe>(matriceJson.text);
         OnRecipeDeserialized?.Invoke(_recipe);
     }

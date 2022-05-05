@@ -50,7 +50,7 @@ public class RecipeManager : MonoBehaviour
     private void SetPostCondition(string postCondition) 
     {
         string[] idAndState = postCondition.Split('/');
-        Interactable interactable = ObjectsManager.Instance.GetInteractable(idAndState[0]);
+        Interactable interactable = EnvironementManager.Instance.GetInteractable(idAndState[0]);
         interactable?.SetState(idAndState[1]);
     }
 }
