@@ -22,6 +22,7 @@ public class EnvironementManager : MonoBehaviour
 
         ScenarioChooser.OnScenarioChoosed += LoadScenarioBackground;
         DataParser.OnPanoplyDeserialized += SpawnObjects;
+        ScenarioChooser.OnResetScenario += DestroyAllObjects;
     } 
 
     private void LoadScenarioBackground(ScenarioType scenario) 
@@ -53,5 +54,11 @@ public class EnvironementManager : MonoBehaviour
     {
         _spawnedObjects.TryGetValue(id, out Interactable interactable);
         return interactable;
+    }
+
+    private void DestroyAllObjects() {
+        foreach (KeyValuePair<string, Interactable> obj in _spawnedObjects)
+            Destroy(obj.Value.gameObject);
+        _spawnedObjects.Clear();
     }
 }

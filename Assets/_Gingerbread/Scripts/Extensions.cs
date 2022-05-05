@@ -31,15 +31,6 @@ public static class Extensions
 
     public static string SplitCamelCaseToLower(this string str)
     {
-        // var r = new Regex(@"
-        //     (?<=[A-Z])(?=[A-Z][a-z]) |
-        //     (?<=[^A-Z])(?=[A-Z]) |
-        //     (?<=[A-Za-z])(?=[^A-Za-z])",
-        //     RegexOptions.IgnorePatternWhitespace
-        // );
-        
-        // return r.Replace(str, " ").ToLower();
-
         return string.Join(" ", Regex.Split(str, @"(?<!^)(?=[A-Z](?![A-Z]|$))")).ToLower();
     }
 }

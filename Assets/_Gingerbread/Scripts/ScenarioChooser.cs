@@ -8,6 +8,7 @@ public enum ScenarioType { Cooking, Shelter }
 public class ScenarioChooser : MonoBehaviour
 {
     public static Action<ScenarioType> OnScenarioChoosed;
+    public static Action OnResetScenario;
 
     public void ChooseScenario(int scenario) {
         if (scenario >= Enum.GetNames(typeof(ScenarioType)).Length) {
@@ -16,5 +17,10 @@ public class ScenarioChooser : MonoBehaviour
         }
         OnScenarioChoosed?.Invoke((ScenarioType) scenario);
         gameObject.SetActive(false);
+    }
+
+    public void ResetScenario() {
+        gameObject.SetActive(true);
+        OnResetScenario?.Invoke();
     }
 }
