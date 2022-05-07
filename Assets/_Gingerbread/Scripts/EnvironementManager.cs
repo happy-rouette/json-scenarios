@@ -20,28 +20,14 @@ public class EnvironementManager : MonoBehaviour
             DestroyImmediate(this);
         }
 
-        ScenarioChooser.OnScenarioChoosed += LoadScenarioBackground;
         DataParser.OnPanoplyDeserialized += SpawnObjects;
         ScenarioChooser.OnResetScenario += DestroyAllObjects;
-    } 
-
-    private void LoadScenarioBackground(ScenarioType scenario) 
-    {
-        string bgPath = "";
-        switch(scenario) {
-            case ScenarioType.Cooking:
-                bgPath = "ObjectSprites/Cooking/scène";
-                break;
-            case ScenarioType.Shelter:
-                bgPath = "ObjectSprites/Shelter/Nature";
-                break;
-        }
-        Sprite bgSprite = Resources.Load<Sprite>(bgPath);
-        _backgroundRenderer.sprite = bgSprite;
     }
 
-    private void SpawnObjects(Panoply data) 
+    private void SpawnObjects(Panoply data, Sprite background) 
     {
+        _backgroundRenderer.sprite = background;
+
         foreach (KeyValuePair<string, ObjectData> obj in data.objets)
         {
             Interactable interactable = Instantiate(_interactablePrefab, transform);
