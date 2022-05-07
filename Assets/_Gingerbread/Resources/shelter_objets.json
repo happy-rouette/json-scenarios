@@ -2,171 +2,99 @@
 	"objets": {
 		"hache": {
 			"nom": "hache",
-			"type": "outil",
 			"etats": ["enBonEtat"],
 			"x": 726,
 			"y": 509,
 			"mobile": true,
-			"image": {
-				"src": "ObjectSprites/Shelter/Axe",
-				"dimX": 60,
-				"dimY": 60,
-				"clefs": {"x":2, "y":1}
-			}
+			"image_src": "ObjectSprites/Shelter/Axe"
 		},
 		"terre": {
 			"nom": "terre",
-			"type": "ingrédient",
 			"etats": ["sèche", "humide", "paille", "finie"],
 			"x": 405,
 			"y": 510,
 			"mobile": true,
-			"image": {
-				"src": "ObjectSprites/Shelter/Dirt",
-				"dimX": 60,
-				"dimY": 120,
-				"clefs": {"x":4, "y":1}
-			}
+			"image_src": "ObjectSprites/Shelter/Dirt"
 		},
 		"seau": {
 			"nom": "seau d'eau",
-			"type": "ingrédient",
 			"etats": ["plein"],
 			"x": 549,
 			"y": 465,
 			"mobile": true,
-			"image": {
-				"src": "ObjectSprites/Shelter/WaterBucket",
-				"dimX": 60,
-				"dimY": 90,
-				"clefs": {"x":2, "y":1}
-			}
+			"image_src": "ObjectSprites/Shelter/WaterBucket"
 		},
 		"feu": {
 			"nom": "feu",
-			"type": "outil",
 			"etats": ["allumé", "éteint"],
 			"x": 609,
 			"y": 504,
 			"mobile": false,
-			"image": {
-				"src": "ObjectSprites/Shelter/Fire",
-				"dimX": 90,
-				"dimY": 60,
-				"clefs": {"x":1, "y":2}
-			}
+			"image_src": "ObjectSprites/Shelter/Fire"
 		},
 		"herbe": {
 			"nom": "herbe",
-			"type": "ingrédient",
 			"etats": ["quiPousse", "coupée", "finie"],
 			"x": 625,
 			"y": 394,
 			"mobile": true,
-			"image": {
-				"src": "ObjectSprites/Shelter/Grass",
-				"dimX": 120,
-				"dimY": 60,
-				"clefs": {"x":1, "y":8}
-			}
+			"image_src": "ObjectSprites/Shelter/Grass"
 		},
 		"faux": {
 			"nom": "faux",
-			"type": "outil",
 			"etats": ["enBonEtat"],
 			"x": 693,
 			"y": 463,
 			"mobile": true,
-			"image": {
-				"src": "ObjectSprites/Shelter/Scythe",
-				"dimX": 120,
-				"dimY": 150,
-				"clefs": {"x":5, "y":1}
-			}
+			"image_src": "ObjectSprites/Shelter/Scythe"
 		},
 		"moule": {
 			"nom": "moule en bois",
-			"type": "outil",
 			"etats": ["vide", "pleinDeTerre", "tuile", "pleinDeSable", "verre"],
 			"x": 336,
 			"y": 448,
 			"mobile": true,
-			"image": {
-				"src": "ObjectSprites/Shelter/Frame",
-				"dimX": 180,
-				"dimY": 180,
-				"clefs": {"x":3, "y":1}
-			}
+			"image_src": "ObjectSprites/Shelter/Frame"
 		},
 		"bâtons": {
 			"nom": "bâtons",
-			"type": "ingrédient",
 			"etats": ["tas", "petitTas", "finis"],
 			"x": 225,
 			"y": 506,
 			"mobile": true,
-			"image": {
-				"src": "ObjectSprites/Shelter/Sticks",
-				"dimX": 180,
-				"dimY": 60,
-				"clefs": {"x":1, "y":2}
-			}
+			"image_src": "ObjectSprites/Shelter/Sticks"
 		},
 		"cabane": {
 			"nom": "cabane",
-			"type": "construction",
 			"etats": ["base", "charpente", "support", "toit", "mursEnTerre", "enduitALaChaux", "avecFenêtres", "avecPorte", "finie"],
 			"x": 120,
 			"y": 371,
 			"mobile": false,
-			"image": {
-				"src": "ObjectSprites/Shelter/Shelter",
-				"dimX": 60,
-				"dimY": 90,
-				"clefs": {"x":1, "y":1}
-			}
+			"image_src": "ObjectSprites/Shelter/Shelter"
 		},
 		"bois": {
 			"nom": "bois",
-			"type": "ingrédient",
 			"etats": ["bûche", "planches", "fini"],
 			"x": 492,
 			"y": 399,
 			"mobile": true,
-			"image": {
-				"src": "ObjectSprites/Shelter/Trunk",
-				"dimX": 40,
-				"dimY": 40,
-				"clefs": {"x":1, "y":1}
-			}
+			"image_src": "ObjectSprites/Shelter/Trunk"
 		},
 		"sable": {
 			"nom": "sable",
-			"type": "ingrédient",
 			"etats": ["tas", "fini"],
 			"x": 448,
 			"y": 450,
 			"mobile": true,
-			"image": {
-				"src": "ObjectSprites/Shelter/Sand",
-				"dimX": 90,
-				"dimY": 84,
-				"clefs": {"x":3, "y":1}
-			}
+			"image_src": "ObjectSprites/Shelter/Sand"
 		},
 		"chaux": {
 			"nom": "chaux",
-			"type": "ingrédient",
 			"etats": ["calcaire", "poudre", "humide", "finie"],
 			"x": 324,
 			"y": 503,
 			"mobile": true,
-			"image": {
-				"src": "ObjectSprites/Shelter/Lime",
-				"dimX": 20,
-				"dimY": 40,
-				"clefs": {"x":1, "y":1}
-			}
+			"image_src": "ObjectSprites/Shelter/Lime"
 		}
 	}
 }

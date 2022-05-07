@@ -58,23 +58,11 @@ public class Panoply {
 
 [System.Serializable]
 public class ObjectData {
-    public string nom, type;
+    public string nom;
     public string[] etats;
     public int x, y;
     public bool mobile;
-    public ImageData image;
-}
-
-[System.Serializable]
-public class ImageData {
-    public string src;
-    public int dimX, dimY;
-    public ClefsData clefs;
-}
-
-[System.Serializable]
-public class ClefsData {
-    public int x, y;
+    public string image_src;
 }
 
 //* Recipe *//
