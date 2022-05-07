@@ -15,14 +15,14 @@ public class ActionDisplayer : MonoBehaviour
     private void Start() 
     {
         Interactable.OnMessage += DisplayMessage;
-        ScenarioChooser.OnResetScenario += ClearAllLogs;
+        ChooseScenarioPanel.OnResetScenario += ResetLogs;
         
         _actionScrollView.gameObject.SetActive(_actionsToggle.isOn);
         _actionsToggle.onValueChanged.AddListener(
             (show) => _actionScrollView.gameObject.SetActive(show)
         );
 
-        ClearAllLogs();
+        ResetLogs();
     }
 
     private void DisplayMessage(Message msg)
@@ -36,9 +36,10 @@ public class ActionDisplayer : MonoBehaviour
             Instantiate(_actionTextPrefab, _scrollContainer).text = text;
     }
 
-    private void ClearAllLogs() {
+    private void ResetLogs() {
         _directActionText.text = "";
         foreach (Transform child in _scrollContainer)
             Destroy(child.gameObject);
+        _actionScrollView.gameObject.SetActive(false);
     }
 }

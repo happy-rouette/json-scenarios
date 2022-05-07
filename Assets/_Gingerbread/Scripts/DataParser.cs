@@ -10,26 +10,29 @@ public class DataParser : MonoBehaviour
     public static Action<Panoply, Sprite> OnPanoplyDeserialized;
     public static Action<Recipe> OnRecipeDeserialized;
 
-    private void Awake() => ScenarioChooser.OnScenarioChoosed += LoadScenarioData;
+    private void Awake() => ScenarioButton.OnScenarioChoosed += LoadScenarioData;
 
-    private void LoadScenarioData(ScenarioType scenario) 
+    private void LoadScenarioData(string scenario) 
     {
-        string basePath = "Scenarios/" + scenario.ToString() + "/";
+        string basePath = "Scenarios/" + scenario + "/";
         string bgPath = basePath + "Sprites/Environement";
         string objectsPath = basePath + "objets";
         string recipePath = basePath + "matrice";
 
         Sprite bgSprite = Resources.Load<Sprite>(bgPath);
 
-        Debug.Log("objects path : " + objectsPath);
-        TextAsset objectsJson = Resources.Load<TextAsset>(objectsPath);
-        Panoply panoply = JsonConvert.DeserializeObject<Panoply>(objectsJson.text);
-        ConvertCoordsForUnity(panoply);
-        OnPanoplyDeserialized?.Invoke(panoply, bgSprite);
+        try {
+            TextAsset objectsJson = Resources.Load<TextAsset>(objectsPath);
+            Panoply panoply = JsonConvert.DeserializeObject<Panoply>(objectsJson.text);
+            ConvertCoordsForUnity(panoply);
+            OnPanoplyDeserialized?.Invoke(panoply, bgSprite);
+        } catch { Debug.LogError("Objects path \"" + objectsPath + "\" doesn't exist"); }
 
-        TextAsset matriceJson = Resources.Load<TextAsset>(recipePath);
-        Recipe recipe = JsonConvert.DeserializeObject<Recipe>(matriceJson.text);
-        OnRecipeDeserialized?.Invoke(recipe);
+        try {
+            TextAsset matriceJson = Resources.Load<TextAsset>(recipePath);
+            Recipe recipe = JsonConvert.DeserializeObject<Recipe>(matriceJson.text);
+            OnRecipeDeserialized?.Invoke(recipe);
+        } catch { Debug.LogError("Recipe path \"" + recipePath + "\" doesn't exist"); }
 
     }
 

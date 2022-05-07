@@ -21,7 +21,7 @@ public class EnvironementManager : MonoBehaviour
         }
 
         DataParser.OnPanoplyDeserialized += SpawnObjects;
-        ScenarioChooser.OnResetScenario += DestroyAllObjects;
+        ChooseScenarioPanel.OnResetScenario += DestroyAllObjects;
     }
 
     private void SpawnObjects(Panoply data, Sprite background) 
