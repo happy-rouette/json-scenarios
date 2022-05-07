@@ -6,7 +6,7 @@
 			"x": 726,
 			"y": 509,
 			"mobile": true,
-			"image_src": "ObjectSprites/Shelter/Axe"
+			"image_src": "Scenarios/Cabane/Sprites/Axe"
 		},
 		"terre": {
 			"nom": "terre",
@@ -14,7 +14,7 @@
 			"x": 405,
 			"y": 510,
 			"mobile": true,
-			"image_src": "ObjectSprites/Shelter/Dirt"
+			"image_src": "Scenarios/Cabane/Sprites/Dirt"
 		},
 		"seau": {
 			"nom": "seau d'eau",
@@ -22,7 +22,7 @@
 			"x": 549,
 			"y": 465,
 			"mobile": true,
-			"image_src": "ObjectSprites/Shelter/WaterBucket"
+			"image_src": "Scenarios/Cabane/Sprites/WaterBucket"
 		},
 		"feu": {
 			"nom": "feu",
@@ -30,7 +30,7 @@
 			"x": 609,
 			"y": 504,
 			"mobile": false,
-			"image_src": "ObjectSprites/Shelter/Fire"
+			"image_src": "Scenarios/Cabane/Sprites/Fire"
 		},
 		"herbe": {
 			"nom": "herbe",
@@ -38,7 +38,7 @@
 			"x": 625,
 			"y": 394,
 			"mobile": true,
-			"image_src": "ObjectSprites/Shelter/Grass"
+			"image_src": "Scenarios/Cabane/Sprites/Grass"
 		},
 		"faux": {
 			"nom": "faux",
@@ -46,7 +46,7 @@
 			"x": 693,
 			"y": 463,
 			"mobile": true,
-			"image_src": "ObjectSprites/Shelter/Scythe"
+			"image_src": "Scenarios/Cabane/Sprites/Scythe"
 		},
 		"moule": {
 			"nom": "moule en bois",
@@ -54,7 +54,7 @@
 			"x": 336,
 			"y": 448,
 			"mobile": true,
-			"image_src": "ObjectSprites/Shelter/Frame"
+			"image_src": "Scenarios/Cabane/Sprites/Frame"
 		},
 		"bâtons": {
 			"nom": "bâtons",
@@ -62,7 +62,7 @@
 			"x": 225,
 			"y": 506,
 			"mobile": true,
-			"image_src": "ObjectSprites/Shelter/Sticks"
+			"image_src": "Scenarios/Cabane/Sprites/Sticks"
 		},
 		"cabane": {
 			"nom": "cabane",
@@ -70,7 +70,7 @@
 			"x": 120,
 			"y": 371,
 			"mobile": false,
-			"image_src": "ObjectSprites/Shelter/Shelter"
+			"image_src": "Scenarios/Cabane/Sprites/Shelter"
 		},
 		"bois": {
 			"nom": "bois",
@@ -78,7 +78,7 @@
 			"x": 492,
 			"y": 399,
 			"mobile": true,
-			"image_src": "ObjectSprites/Shelter/Trunk"
+			"image_src": "Scenarios/Cabane/Sprites/Trunk"
 		},
 		"sable": {
 			"nom": "sable",
@@ -86,7 +86,7 @@
 			"x": 448,
 			"y": 450,
 			"mobile": true,
-			"image_src": "ObjectSprites/Shelter/Sand"
+			"image_src": "Scenarios/Cabane/Sprites/Sand"
 		},
 		"chaux": {
 			"nom": "chaux",
@@ -94,7 +94,7 @@
 			"x": 324,
 			"y": 503,
 			"mobile": true,
-			"image_src": "ObjectSprites/Shelter/Lime"
+			"image_src": "Scenarios/Cabane/Sprites/Lime"
 		}
 	}
 }

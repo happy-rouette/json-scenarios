@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ScenarioType { Cooking, Shelter }
+public enum ScenarioType { Cuisine, Cabane }
 
 public class ScenarioChooser : MonoBehaviour
 {

@@ -6,7 +6,7 @@
 			"x": 130,
 			"y": 370,
 			"mobile": true,
-			"image_src": "ObjectSprites/Cooking/oeufs"
+			"image_src": "Scenarios/Cuisine/Sprites/oeufs"
 		},
 		"lait": {
 			"nom": "lait",
@@ -14,7 +14,7 @@
 			"x": 680,
 			"y": 335,
 			"mobile": true,
-			"image_src": "ObjectSprites/Cooking/lait"
+			"image_src": "Scenarios/Cuisine/Sprites/lait"
 		},
 		"farine": {
 			"nom": "farine",
@@ -22,7 +22,7 @@
 			"x": 200,
 			"y": 360,
 			"mobile": true,
-			"image_src": "ObjectSprites/Cooking/farine"
+			"image_src": "Scenarios/Cuisine/Sprites/farine"
 		},
 		"spatule": {
 			"nom": "spatule",
@@ -30,7 +30,7 @@
 			"x": 350,
 			"y": 435,
 			"mobile": true,
-			"image_src": "ObjectSprites/Cooking/spatule"
+			"image_src": "Scenarios/Cuisine/Sprites/spatule"
 		},
 		"saladier": {
 			"nom": "saladier",
@@ -38,7 +38,7 @@
 			"x": 400,
 			"y": 370,
 			"mobile": true,
-			"image_src": "ObjectSprites/Cooking/saladier"
+			"image_src": "Scenarios/Cuisine/Sprites/saladier"
 		},
 		"moule": {
 			"nom": "moule",
@@ -46,21 +46,21 @@
 			"x": 550,
 			"y": 400,
 			"mobile": true,
-			"image_src": "ObjectSprites/Cooking/moule"
+			"image_src": "Scenarios/Cuisine/Sprites/moule"
 		},
 		"four": {
 			"nom": "four",
 			"etats": ["éteint", "allumé", "cuisson"],
 			"x": 680,
 			"y": 170,
-			"image_src": "ObjectSprites/Cooking/four"
+			"image_src": "Scenarios/Cuisine/Sprites/four"
 		},
 		"cuisson": {
 			"nom": "plaques de cuisson",
 			"etats": ["éteint", "allumé"],
 			"x": 150,
 			"y": 220,
-			"image_src": "ObjectSprites/Cooking/cuisson"
+			"image_src": "Scenarios/Cuisine/Sprites/cuisson"
 		},
 		"sucre": {
 			"nom": "sucre",
@@ -68,7 +68,7 @@
 			"x": 50,
 			"y": 370,
 			"mobile": true,
-			"image_src": "ObjectSprites/Cooking/sucre"
+			"image_src": "Scenarios/Cuisine/Sprites/sucre"
 		},
 		"miel": {
 			"nom": "miel",
@@ -76,7 +76,7 @@
 			"x": 130,
 			"y": 440,
 			"mobile": true,
-			"image_src": "ObjectSprites/Cooking/miel"
+			"image_src": "Scenarios/Cuisine/Sprites/miel"
 		},
 		"casserole": {
 			"nom": "casserole",
@@ -84,7 +84,7 @@
 			"x": 680,
 			"y": 440,
 			"mobile": true,
-			"image_src": "ObjectSprites/Cooking/casserole"
+			"image_src": "Scenarios/Cuisine/Sprites/casserole"
 		},
 		"épices": {
 			"nom": "épices",
@@ -92,7 +92,7 @@
 			"x": 180,
 			"y": 430,
 			"mobile": true,
-			"image_src": "ObjectSprites/Cooking/épices"
+			"image_src": "Scenarios/Cuisine/Sprites/épices"
 		},
 		"doseur": {
 			"nom": "verre doseur",
@@ -100,7 +100,7 @@
 			"x": 270,
 			"y": 420,
 			"mobile": true,
-			"image_src": "ObjectSprites/Cooking/doseur"
+			"image_src": "Scenarios/Cuisine/Sprites/doseur"
 		}
 	}
 }

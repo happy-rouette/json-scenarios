@@ -14,22 +14,14 @@ public class DataParser : MonoBehaviour
 
     private void LoadScenarioData(ScenarioType scenario) 
     {
-        string bgPath = "", objectsPath = "", recipePath = "";
-        switch(scenario) {
-            case ScenarioType.Cooking:
-                bgPath = "ObjectSprites/Cooking/scène";
-                objectsPath = "cooking_objets";
-                recipePath = "cooking_matrice";
-                break;
-            case ScenarioType.Shelter:
-                bgPath = "ObjectSprites/Shelter/Nature";
-                objectsPath = "shelter_objets";
-                recipePath = "shelter_matrice";
-                break;
-        }
+        string basePath = "Scenarios/" + scenario.ToString() + "/";
+        string bgPath = basePath + "Sprites/Environement";
+        string objectsPath = basePath + "objets";
+        string recipePath = basePath + "matrice";
 
         Sprite bgSprite = Resources.Load<Sprite>(bgPath);
 
+        Debug.Log("objects path : " + objectsPath);
         TextAsset objectsJson = Resources.Load<TextAsset>(objectsPath);
         Panoply panoply = JsonConvert.DeserializeObject<Panoply>(objectsJson.text);
         ConvertCoordsForUnity(panoply);
