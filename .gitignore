@@ -3,6 +3,8 @@ UserSettings
 Library
 Temp
 Logs
-Gingerbread.sln
+*.sln
 obj
 *.csproj
+Builds
+_ARendre
