@@ -40,6 +40,6 @@ public class ActionDisplayer : MonoBehaviour
         _directActionText.text = "";
         foreach (Transform child in _scrollContainer)
             Destroy(child.gameObject);
-        _actionScrollView.gameObject.SetActive(false);
+        _actionsToggle.isOn = false;
     }
 }
