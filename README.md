@@ -54,6 +54,8 @@ To add a new scenario you don't have to write any code. You just have to add fil
 
 As explained above, don't forget to add \<YourScenarioName\> in *ScenariosEnumeration.txt*.  
 
+The Environement image has to be 800 x 600 px
+
 In Unity slice your spritesheets, one sprite for each state.
 
 objet.json needs to be structured like this :  
